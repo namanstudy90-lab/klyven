@@ -11,7 +11,7 @@ export const COLORS = {
   glassHover: "rgba(0, 212, 255, 0.12)",
 };
 
-export const SECTION_COUNT = 8;
+export const SECTION_COUNT = 9;
 export const PARTICLE_COUNT = 2000;
 
 export const SERVICES = [

@@ -28,6 +28,11 @@ const OpenSourceSection = dynamic(
   { ssr: false }
 );
 
+const BlogSection = dynamic(
+  () => import("@/components/dom/BlogSection").then((m) => ({ default: m.BlogSection })),
+  { ssr: false }
+);
+
 const AboutSection = dynamic(
   () => import("@/components/dom/AboutSection").then((m) => ({ default: m.AboutSection })),
   { ssr: false }
@@ -57,6 +62,7 @@ export default function Home() {
         <ServicesSection />
         <ProductsSection />
         <OpenSourceSection />
+        <BlogSection />
         <AboutSection />
         <JoinSection />
         <CTASection />
