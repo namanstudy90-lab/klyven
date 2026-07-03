@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://klyven.qzz.io/sitemap.xml
