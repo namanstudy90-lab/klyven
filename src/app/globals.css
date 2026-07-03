@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-klyven-deep: #060914;
+  --color-klyven-surface: #0a0e1a;
+  --color-klyven-cyan: #00d4ff;
+  --color-klyven-violet: #7b2ff7;
+  --color-klyven-magenta: #ff2d78;
+  --color-klyven-glass: rgba(0, 212, 255, 0.06);
+  --color-klyven-glass-border: rgba(0, 212, 255, 0.12);
+  --color-klyven-glass-hover: rgba(0, 212, 255, 0.12);
+  --color-klyven-text: #eef4ff;
+  --color-klyven-muted: rgba(200, 220, 255, 0.45);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #060914;
+}
+
+body {
+  background: #060914;
+  color: #eef4ff;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+body * {
+  cursor: none !important;
+}
+
+canvas {
+  cursor: none !important;
+}
+
+::selection {
+  background: rgba(0, 212, 255, 0.25);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
