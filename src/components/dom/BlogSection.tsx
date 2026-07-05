@@ -5,22 +5,22 @@ import { useInView, motion } from "framer-motion";
 
 const POSTS = [
   {
-    title: "Announcing KLYVEN",
-    date: "July 3, 2026",
-    summary: "We're building the foundational intelligence layer for next-generation software. AI-native, real-time, and secure by design.",
-    tags: ["company", "product"],
+    title: "Team of Lions — The Mindset",
+    date: "July 5, 2026",
+    summary: "We don't follow trends. We forge them. A pack of relentless builders working in the shadows — identities hidden, impact undeniable.",
+    tags: ["lions", "mindset"],
   },
   {
-    title: "Building a 3D Glass-Morphism Landing Page",
-    date: "July 3, 2026",
-    summary: "How we used Three.js, React Three Fiber, and Tailwind CSS to create an immersive glass-frosted future aesthetic.",
-    tags: ["engineering", "design"],
+    title: "Pikoo OS — Your Personal AI Operating System",
+    date: "July 4, 2026",
+    summary: "A ground-up AI-integrated desktop OS that learns from you, adapts to your workflow, and thinks beside you — like having your own Jarvis.",
+    tags: ["product", "pikoo"],
   },
   {
-    title: "Nexcarto: Local Food Delivery Reimagined",
-    date: "July 2, 2026",
-    summary: "Connecting neighborhoods with local restaurants through intelligent routing and community-first delivery.",
-    tags: ["product", "nexcarto"],
+    title: "Built Different. Built to Dominate.",
+    date: "July 3, 2026",
+    summary: "KLYVEN exists to shape tomorrow's technology — from Nexcarto reimagining local delivery to an ecosystem of tools that solve real problems.",
+    tags: ["company", "vision"],
   },
 ];
 
