@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | KLYVEN",
   },
   description:
-    "We build the foundational intelligence layer for next-generation software. AI-native, real-time, and secure by design.",
+    "KLYVEN builds and ships real products — and publishes the research behind them, in the open. From local delivery to open-source tools.",
   keywords: [
     "KLYVEN",
     "custom software development",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "KLYVEN",
     title: "KLYVEN — Engineering Tomorrow",
     description:
-      "We build the foundational intelligence layer for next-generation software. AI-native, real-time, and secure by design.",
+      "KLYVEN builds and ships real products — and publishes the research behind them, in the open. From local delivery to open-source tools.",
     images: [
       {
         url: "/og.png",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "KLYVEN — Engineering Tomorrow",
     description:
-      "We build the foundational intelligence layer for next-generation software. AI-native, real-time, and secure by design.",
+      "KLYVEN builds and ships real products — and publishes the research behind them, in the open. From local delivery to open-source tools.",
     images: ["/og.png"],
     creator: "@klyven",
   },
@@ -109,7 +109,7 @@ const jsonLd = {
       url: siteUrl,
       logo: `${siteUrl}/logo.png`,
       description:
-        "We build the foundational intelligence layer for next-generation software. AI-native, real-time, and secure by design.",
+        "KLYVEN builds and ships real products — and publishes the research behind them, in the open. From local delivery to open-source tools.",
       foundingDate: "2026",
       founder: [
         {

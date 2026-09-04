@@ -5,9 +5,9 @@ import { useInView, motion } from "framer-motion";
 
 const STATS = [
   { value: "2026", label: "Founded" },
-  { value: "99.9%", label: "Uptime" },
-  { value: "12M+", label: "Requests/Day" },
-  { value: "150+", label: "Team Members" },
+  { value: "2", label: "Founders" },
+  { value: "3", label: "Products & Tools" },
+  { value: "Open", label: "Source + Commercial" },
 ];
 
 export function AboutSection() {
@@ -31,11 +31,12 @@ export function AboutSection() {
       </motion.div>
       <div className="relative max-w-3xl w-full px-4 text-center">
         <div
-          className="rounded-3xl p-10 md:p-14"
+          className="rounded-3xl p-12 md:p-16"
           style={{
-            background: "rgba(10, 14, 30, 0.7)",
-            border: "1px solid rgba(123, 47, 247, 0.12)",
+            background: "var(--klyven-card-bg)",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
             backdropFilter: "blur(20px)",
+            boxShadow: "var(--klyven-card-shadow)",
           }}
         >
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-extralight tracking-[-0.04em] leading-[1.05] text-white">
@@ -43,11 +44,10 @@ export function AboutSection() {
           </h2>
           <div className="mt-8 h-px w-24 mx-auto bg-gradient-to-r from-transparent via-violet-400/40 to-transparent" />
           <p className="mt-8 text-sm md:text-base leading-relaxed max-w-xl mx-auto text-blue-100/70">
-            KLYVEN is a parent company building the foundational layer for tomorrow&apos;s
-            technology. From custom software and AI-powered operating systems to digital
-            products that connect communities — we build at every level of the stack.
-            Some things we open source, some things we build commercially. All of it
-            engineered to last.
+            KLYVEN builds and ships real products — and publishes the research
+            behind them, in the open. From local delivery to open-source tools,
+            we work across the stack. Some things we open source, some things
+            we build commercially. All of it engineered to last.
           </p>
           <p className="mt-6 text-sm md:text-base leading-relaxed max-w-xl mx-auto text-blue-100/70">
             KLYVEN was founded by{" "}

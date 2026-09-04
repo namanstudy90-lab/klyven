@@ -56,7 +56,7 @@ export function JoinSection() {
             </Link>
           </motion.div>
           <motion.div
-            className="space-y-3"
+            className="space-y-4"
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
@@ -65,11 +65,12 @@ export function JoinSection() {
               <Link
                 key={role}
                 href="/contact"
-                className="block rounded-xl p-4 transition-all duration-500"
+                className="block rounded-2xl p-5 transition-all duration-500"
                 style={{
-                  background: "rgba(10, 14, 30, 0.7)",
-                  border: "1px solid rgba(0, 212, 255, 0.06)",
+                  background: "var(--klyven-card-bg)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
                   backdropFilter: "blur(12px)",
+                  boxShadow: "var(--klyven-card-shadow)",
                   transform: isInView ? "translateX(0)" : "translateX(20px)",
                   opacity: isInView ? 1 : 0,
                   transition: `all 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 0.1 + 0.3}s`,

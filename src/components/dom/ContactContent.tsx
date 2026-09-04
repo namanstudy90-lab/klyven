@@ -84,11 +84,12 @@ export function ContactContent() {
                 duration: 0.9,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="rounded-3xl p-8 md:p-10 block transition-all duration-500"
+              className="rounded-3xl p-10 md:p-12 block transition-all duration-500"
               style={{
-                background: "rgba(10, 14, 30, 0.7)",
+                background: "var(--klyven-card-bg)",
                 border: `1px solid ${channel.accent}22`,
                 backdropFilter: "blur(20px)",
+                boxShadow: "var(--klyven-card-shadow)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = `${channel.accent}55`;
@@ -99,7 +100,7 @@ export function ContactContent() {
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = `${channel.accent}22`;
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.boxShadow = "var(--klyven-card-shadow)";
                 useStore.getState().setCursorVariant("default");
               }}
             >
@@ -129,12 +130,13 @@ export function ContactContent() {
             duration: 0.8,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="rounded-3xl p-8 md:p-10 mt-12"
+          className="rounded-3xl p-10 md:p-12 mt-14"
           style={{
             background:
               "linear-gradient(135deg, rgba(0,212,255,0.08), rgba(123,47,247,0.08))",
             border: "1px solid rgba(0, 212, 255, 0.18)",
             backdropFilter: "blur(20px)",
+            boxShadow: "var(--klyven-card-shadow)",
           }}
         >
           <span

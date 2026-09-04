@@ -11,7 +11,7 @@ export const COLORS = {
   glassHover: "rgba(0, 212, 255, 0.12)",
 };
 
-export const SECTION_COUNT = 9;
+export const SECTION_COUNT = 10;
 export const PARTICLE_COUNT = 2000;
 
 export const SERVICES = [
@@ -27,7 +27,7 @@ export const SERVICES = [
   },
   {
     title: "Digital Products",
-    description: "From Nexcarto — local food delivery reimagined — to a growing ecosystem of tools and platforms that solve real-world problems.",
+    description: "From Nexcarto — local delivery for your everyday needs — to a growing ecosystem of tools and platforms that solve real-world problems.",
     icon: "◆",
   },
 ];
@@ -35,8 +35,8 @@ export const SERVICES = [
 export const PRODUCTS = [
   {
     name: "Nexcarto",
-    tagline: "Food delivery for local people",
-    description: "Connecting neighborhoods with local restaurants and shops. Fast, reliable, and community-first delivery powered by intelligent routing.",
+    tagline: "Everyday essentials, delivered local",
+    description: "Local delivery that connects neighborhoods with nearby shops and services — groceries, food, clothing, medicine, and more. Community-first and built for what you need, when you need it.",
     status: "live",
     price: "Paid",
     color: "#00d4ff",

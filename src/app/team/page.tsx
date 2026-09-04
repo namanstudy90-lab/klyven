@@ -7,14 +7,14 @@ const siteUrl = "https://klyven.qzz.io";
 export const metadata: Metadata = {
   title: "Founders & Team",
   description:
-    "KLYVEN was founded by Naman Sharma and Ayush Mishra. Meet the minds building the foundational intelligence layer for next-generation software.",
+    "KLYVEN was founded by Naman Sharma and Ayush Mishra. Meet the pair building and shipping real products — and publishing the research behind them, in the open.",
   alternates: {
     canonical: `${siteUrl}/team`,
   },
   openGraph: {
     title: "Founders & Team | KLYVEN",
     description:
-      "Naman Sharma and Ayush Mishra founded KLYVEN in 2026 to build the foundational intelligence layer for next-generation software.",
+      "Naman Sharma and Ayush Mishra founded KLYVEN in 2026 to build and ship real products — and publish the research behind them, in the open.",
     url: `${siteUrl}/team`,
     type: "website",
   },

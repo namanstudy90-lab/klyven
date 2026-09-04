@@ -11,6 +11,21 @@
   --color-klyven-glass-hover: rgba(0, 212, 255, 0.12);
   --color-klyven-text: #eef4ff;
   --color-klyven-muted: rgba(200, 220, 255, 0.45);
+
+  --klyven-card-bg: rgba(16, 20, 42, 0.78);
+  --klyven-card-bg-hover: rgba(20, 25, 50, 0.86);
+  --klyven-card-border: rgba(255, 255, 255, 0.08);
+  --klyven-card-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+}
+
+@layer utilities {
+  .klyven-card {
+    border-radius: 1.5rem;
+    background: var(--klyven-card-bg);
+    border: 1px solid var(--klyven-card-border);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--klyven-card-shadow);
+  }
 }
 
 * {

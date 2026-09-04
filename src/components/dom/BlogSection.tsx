@@ -19,7 +19,7 @@ const POSTS = [
   {
     title: "Built Different. Built to Dominate.",
     date: "July 3, 2026",
-    summary: "KLYVEN exists to shape tomorrow's technology — from Nexcarto reimagining local delivery to an ecosystem of tools that solve real problems.",
+    summary: "KLYVEN exists to shape tomorrow's technology — from Nexcarto delivering everyday essentials locally to an ecosystem of tools that solve real problems.",
     tags: ["company", "vision"],
   },
 ];
@@ -46,37 +46,38 @@ export function BlogSection() {
           Blog &amp; News
         </h2>
       </motion.div>
-      <div className="relative max-w-4xl w-full px-4 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+      <div className="relative max-w-4xl w-full px-4 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
         {POSTS.map((post, i) => (
           <motion.article
             key={post.title}
-            className="rounded-2xl p-6 transition-all duration-700 flex flex-col"
+            className="rounded-3xl p-8 transition-all duration-700 flex flex-col"
             style={{
-              background: "rgba(10, 14, 30, 0.7)",
-              border: "1px solid rgba(0, 212, 255, 0.1)",
+              background: "var(--klyven-card-bg)",
+              border: "1px solid rgba(255, 255, 255, 0.08)",
               backdropFilter: "blur(20px)",
+              boxShadow: "var(--klyven-card-shadow)",
               transform: isInView ? "translateY(0)" : `translateY(${50 * (i + 1)}px)`,
               opacity: isInView ? 1 : 0,
               transition: `all 0.8s cubic-bezier(0.16,1,0.3,1) ${i * 0.15}s`,
             }}
           >
-            <h3 className="text-base tracking-[0.05em] mb-3 text-white leading-snug">
+            <h3 className="text-base tracking-[0.05em] mb-4 text-white leading-snug">
               {post.title}
             </h3>
-            <p className="text-xs text-blue-100/50 mb-3">
+            <p className="text-xs text-blue-100/50 mb-4">
               {post.date}
             </p>
             <p className="text-sm leading-relaxed text-blue-100/70 flex-1">
               {post.summary}
             </p>
-            <div className="flex flex-wrap gap-2 mt-4">
+            <div className="flex flex-wrap gap-2 mt-6">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
                   className="text-[10px] tracking-[0.15em] uppercase px-3 py-1 rounded-full"
                   style={{
-                    background: "rgba(0, 212, 255, 0.08)",
-                    border: "1px solid rgba(0, 212, 255, 0.15)",
+                    background: "rgba(0, 212, 255, 0.06)",
+                    border: "1px solid rgba(0, 212, 255, 0.12)",
                     color: "rgba(0, 212, 255, 0.7)",
                   }}
                 >

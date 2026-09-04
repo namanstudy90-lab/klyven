@@ -9,6 +9,7 @@ const LINKS = [
   { label: "Services", href: "/#services" },
   { label: "Products", href: "/#products" },
   { label: "Open Source", href: "/#opensource" },
+  { label: "Research", href: "/#research" },
   { label: "About", href: "/about" },
   { label: "Team", href: "/team" },
   { label: "Contact", href: "/contact" },
@@ -27,11 +28,12 @@ export function FooterSection() {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[#060914]/50 to-[#060914]" />
       <motion.div
-        className="relative text-center max-w-lg w-full px-8 py-12 rounded-2xl"
+        className="relative text-center max-w-lg w-full px-10 py-14 rounded-2xl"
         style={{
-          background: "rgba(10, 14, 30, 0.7)",
-          border: "1px solid rgba(0, 212, 255, 0.06)",
+          background: "var(--klyven-card-bg)",
+          border: "1px solid rgba(255, 255, 255, 0.08)",
           backdropFilter: "blur(12px)",
+          boxShadow: "var(--klyven-card-shadow)",
           transform: isInView ? "translateY(0)" : "translateY(30px)",
           opacity: isInView ? 1 : 0,
           transition: "all 0.8s cubic-bezier(0.16,1,0.3,1)",

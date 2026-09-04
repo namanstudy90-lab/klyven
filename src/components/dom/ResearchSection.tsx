@@ -4,13 +4,13 @@ import { useRef } from "react";
 import { useInView, motion } from "framer-motion";
 import { useStore } from "@/lib/store";
 
-export function OpenSourceSection() {
+export function ResearchSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section
-      id="opensource"
+      id="research"
       ref={ref}
       className="relative w-full min-h-screen flex flex-col items-center justify-center select-none py-24 px-4 overflow-hidden"
     >
@@ -30,37 +30,37 @@ export function OpenSourceSection() {
             boxShadow: "var(--klyven-card-shadow)",
           }}
         >
-          <span className="text-4xl mb-4 block text-pink-400/60">&lt;/&gt;</span>
+          <span className="text-4xl mb-4 block text-cyan-400/60">⌗</span>
           <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-extralight tracking-[-0.03em] leading-[1.05] text-white">
-            Built in the <span className="text-pink-400">Open</span>
+            Research in the <span className="text-cyan-400">Open</span>
           </h2>
-          <div className="mt-6 h-px w-20 mx-auto bg-gradient-to-r from-transparent via-pink-400/40 to-transparent" />
+          <div className="mt-6 h-px w-20 mx-auto bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
           <p className="mt-6 text-sm md:text-base leading-relaxed max-w-lg mx-auto text-blue-100/70">
-            We believe great software should be shared. Our tools, libraries, and frameworks
-            are open source and free for everyone — and our commercial products fund the work
-            that keeps them that way. A healthy mix of open and sustainable.
+            We don&apos;t just build products — we publish the engineering and
+            research behind them. From AI at 4GB scale to the systems that power
+            what we ship, our work is open for anyone to read, reuse, and build on.
           </p>
           <a
-            href="https://github.com/klyven"
+            href="https://github.com/namanstudy90-lab/Project-Sparrow/tree/master/4GB-AI"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-10 inline-block text-xs tracking-[0.25em] uppercase py-4 px-10 rounded-full transition-all duration-500 text-blue-100/80"
             style={{
-              background: "rgba(255, 45, 120, 0.1)",
-              border: "1px solid rgba(255, 45, 120, 0.25)",
+              background: "rgba(0, 212, 255, 0.1)",
+              border: "1px solid rgba(0, 212, 255, 0.25)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(255, 45, 120, 0.2)";
-              e.currentTarget.style.borderColor = "rgba(255, 45, 120, 0.5)";
+              e.currentTarget.style.background = "rgba(0, 212, 255, 0.2)";
+              e.currentTarget.style.borderColor = "rgba(0, 212, 255, 0.5)";
               useStore.getState().setCursorVariant("hover");
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(255, 45, 120, 0.1)";
-              e.currentTarget.style.borderColor = "rgba(255, 45, 120, 0.25)";
+              e.currentTarget.style.background = "rgba(0, 212, 255, 0.1)";
+              e.currentTarget.style.borderColor = "rgba(0, 212, 255, 0.25)";
               useStore.getState().setCursorVariant("default");
             }}
           >
-            Browse GitHub
+            View Research
           </a>
         </div>
       </motion.div>

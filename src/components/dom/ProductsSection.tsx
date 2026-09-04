@@ -12,6 +12,7 @@ export function ProductsSection() {
 
   return (
     <section
+      id="products"
       ref={ref}
       className="relative w-full min-h-screen flex flex-col items-center justify-center select-none py-24 px-4 overflow-hidden"
     >
@@ -25,15 +26,16 @@ export function ProductsSection() {
         <span className="text-xs tracking-[0.4em] uppercase text-violet-400/60">Our Products</span>
         <div className="mt-3 h-px w-12 mx-auto bg-gradient-to-r from-transparent via-violet-400/40 to-transparent" />
       </motion.div>
-      <div className="relative max-w-5xl w-full px-4 space-y-4">
+      <div className="relative max-w-6xl w-full px-4 space-y-8 md:space-y-12">
         {PRODUCTS.map((product, i) => (
           <div
             key={product.name}
-            className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all duration-700"
+            className="rounded-3xl p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-10 transition-all duration-700"
             style={{
-              background: "rgba(10, 14, 30, 0.7)",
-              border: "1px solid rgba(0, 212, 255, 0.08)",
+              background: "var(--klyven-card-bg)",
+              border: "1px solid rgba(255, 255, 255, 0.08)",
               backdropFilter: "blur(20px)",
+              boxShadow: "var(--klyven-card-shadow)",
               transform: isInView ? "translateY(0)" : `translateY(${40 * (i + 1)}px)`,
               opacity: isInView ? 1 : 0,
               transition: `all 0.8s cubic-bezier(0.16,1,0.3,1) ${i * 0.12}s`,
@@ -41,14 +43,14 @@ export function ProductsSection() {
             onMouseEnter={() => useStore.getState().setCursorVariant("hover")}
             onMouseLeave={() => useStore.getState().setCursorVariant("default")}
           >
-            <div className="flex-1">
-              <div className="flex items-center gap-4 mb-2">
-                <h3 className="text-lg tracking-[0.1em] uppercase text-white">{product.name}</h3>
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <h3 className="text-xl tracking-[0.1em] uppercase text-white">{product.name}</h3>
                 <span
                   className="text-[9px] tracking-[0.2em] uppercase px-3 py-1 rounded-full"
                   style={{
-                    background: `${product.color}20`,
-                    border: `1px solid ${product.color}40`,
+                    background: `${product.color}18`,
+                    border: `1px solid ${product.color}33`,
                     color: product.color,
                   }}
                 >
@@ -57,26 +59,26 @@ export function ProductsSection() {
                 <span
                   className="text-[9px] tracking-[0.2em] uppercase px-3 py-1 rounded-full"
                   style={{
-                    background: product.price === "Free" ? "rgba(255,45,120,0.12)" : "rgba(0,212,255,0.1)",
-                    border: `1px solid ${product.price === "Free" ? "rgba(255,45,120,0.3)" : "rgba(0,212,255,0.25)"}`,
+                    background: product.price === "Free" ? "rgba(255,45,120,0.1)" : "rgba(0,212,255,0.08)",
+                    border: `1px solid ${product.price === "Free" ? "rgba(255,45,120,0.22)" : "rgba(0,212,255,0.18)"}`,
                     color: product.price === "Free" ? "#ff2d78" : "#00d4ff",
                   }}
                 >
                   {product.price === "Free" ? "Open Source" : "Paid"}
                 </span>
               </div>
-              <p className="text-xs tracking-[0.2em] uppercase mb-2 text-blue-100/50">{product.tagline}</p>
-              <p className="text-sm leading-relaxed text-blue-100/70">{product.description}</p>
+              <p className="text-xs tracking-[0.2em] uppercase mb-3 text-blue-100/50">{product.tagline}</p>
+              <p className="text-sm md:text-[15px] leading-relaxed text-blue-100/70 max-w-2xl">{product.description}</p>
             </div>
             {product.status === "free" ? (
               <a
                 href="https://github.com/klyven"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 text-xs tracking-[0.2em] uppercase py-3 px-6 rounded-full transition-all duration-300 text-center"
+                className="shrink-0 text-xs tracking-[0.2em] uppercase py-4 px-8 rounded-full transition-all duration-300 text-center"
                 style={{
-                  background: `${product.color}15`,
-                  border: `1px solid ${product.color}30`,
+                  background: `${product.color}12`,
+                  border: `1px solid ${product.color}28`,
                   color: product.color,
                 }}
               >
@@ -85,10 +87,10 @@ export function ProductsSection() {
             ) : (
               <Link
                 href="/contact"
-                className="shrink-0 text-xs tracking-[0.2em] uppercase py-3 px-6 rounded-full transition-all duration-300 text-center"
+                className="shrink-0 text-xs tracking-[0.2em] uppercase py-4 px-8 rounded-full transition-all duration-300 text-center"
                 style={{
-                  background: `${product.color}15`,
-                  border: `1px solid ${product.color}30`,
+                  background: `${product.color}12`,
+                  border: `1px solid ${product.color}28`,
                   color: product.color,
                 }}
                 onMouseEnter={() => useStore.getState().setCursorVariant("hover")}

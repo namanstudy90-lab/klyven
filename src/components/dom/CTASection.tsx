@@ -12,11 +12,12 @@ export function CTASection() {
       <div className="absolute inset-0 bg-gradient-to-b from-[#060914]/50 via-[#060914]/40 to-[#060914]/60" />
       <div className="relative max-w-3xl w-full px-4 text-center">
         <div
-          className="rounded-3xl p-10 md:p-14"
+          className="rounded-3xl p-10 md:p-16"
           style={{
-            background: "rgba(10, 14, 30, 0.7)",
-            border: "1px solid rgba(0, 212, 255, 0.1)",
+            background: "var(--klyven-card-bg)",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
             backdropFilter: "blur(20px)",
+            boxShadow: "var(--klyven-card-shadow)",
           }}
         >
           <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-extralight tracking-[-0.04em] leading-[1.05] text-white">

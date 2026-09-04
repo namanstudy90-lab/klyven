@@ -11,6 +11,7 @@ export function ServicesSection() {
 
   return (
     <section
+      id="services"
       ref={ref}
       className="relative w-full min-h-screen flex flex-col items-center justify-center select-none py-24 px-4 overflow-hidden"
     >
@@ -28,15 +29,16 @@ export function ServicesSection() {
         </h2>
       </motion.div>
       <div className="relative max-w-6xl w-full px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {SERVICES.map((service, i) => (
             <div
               key={service.title}
-              className="rounded-2xl p-8 transition-all duration-700"
+              className="rounded-3xl p-8 md:p-12 transition-all duration-700"
               style={{
-                background: "rgba(10, 14, 30, 0.7)",
-                border: "1px solid rgba(0, 212, 255, 0.1)",
+                background: "var(--klyven-card-bg)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
                 backdropFilter: "blur(20px)",
+                boxShadow: "var(--klyven-card-shadow)",
                 transform: isInView ? "translateY(0)" : `translateY(${50 * (i + 1)}px)`,
                 opacity: isInView ? 1 : 0,
                 transition: `all 0.8s cubic-bezier(0.16,1,0.3,1) ${i * 0.15}s`,
@@ -44,7 +46,7 @@ export function ServicesSection() {
               onMouseEnter={() => useStore.getState().setCursorVariant("hover")}
               onMouseLeave={() => useStore.getState().setCursorVariant("default")}
             >
-              <span className="block text-3xl mb-5 text-cyan-400/70">{service.icon}</span>
+              <span className="block text-3xl mb-6 text-cyan-400/70">{service.icon}</span>
               <h3 className="text-base tracking-[0.15em] uppercase mb-4 text-white">
                 {service.title}
               </h3>

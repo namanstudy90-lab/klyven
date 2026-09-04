@@ -103,11 +103,12 @@ export function AboutContent() {
             duration: 0.8,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="rounded-3xl p-8 md:p-10 mt-12"
+          className="rounded-3xl p-10 md:p-12 mt-14"
           style={{
-            background: "rgba(10, 14, 30, 0.7)",
-            border: "1px solid rgba(0, 212, 255, 0.12)",
+            background: "var(--klyven-card-bg)",
+            border: "1px solid var(--klyven-card-border)",
             backdropFilter: "blur(20px)",
+            boxShadow: "var(--klyven-card-shadow)",
           }}
         >
           <h2 className="text-xl font-extralight tracking-[-0.02em] text-white">
@@ -125,7 +126,7 @@ export function AboutContent() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-14">
           {values.map((value, i) => (
             <motion.div
               key={value.title}
@@ -133,20 +134,21 @@ export function AboutContent() {
               variants={fadeUp}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="rounded-3xl p-8 transition-all duration-500 group"
+              className="rounded-3xl p-10 md:p-12 transition-all duration-500 group"
               style={{
-                background: "rgba(10, 14, 30, 0.6)",
-                border: "1px solid rgba(123, 47, 247, 0.12)",
+                background: "var(--klyven-card-bg)",
+                border: "1px solid rgba(123, 47, 247, 0.16)",
                 backdropFilter: "blur(16px)",
+                boxShadow: "var(--klyven-card-shadow)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(123, 47, 247, 0.3)";
-                e.currentTarget.style.background = "rgba(10, 14, 30, 0.8)";
+                e.currentTarget.style.borderColor = "rgba(123, 47, 247, 0.35)";
+                e.currentTarget.style.background = "var(--klyven-card-bg-hover)";
                 useStore.getState().setCursorVariant("hover");
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(123, 47, 247, 0.12)";
-                e.currentTarget.style.background = "rgba(10, 14, 30, 0.6)";
+                e.currentTarget.style.borderColor = "rgba(123, 47, 247, 0.16)";
+                e.currentTarget.style.background = "var(--klyven-card-bg)";
                 useStore.getState().setCursorVariant("default");
               }}
             >
@@ -173,8 +175,8 @@ export function AboutContent() {
           }}
           className="mt-14 text-sm md:text-base leading-relaxed text-blue-100/80 max-w-2xl"
         >
-          As a parent company, KLYVEN is building the foundational intelligence
-          layer for tomorrow&apos;s technology. We are growing our leadership
+          As a parent company, KLYVEN builds and ships real products — and
+          publishes the research behind them, in the open. We are growing our leadership
           team now — hiring a CEO and co-founders today to help shape what&apos;s
           next.{" "}
           <Link href="/contact" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
