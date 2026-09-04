@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@/components/Analytics";
 import "./globals.css";
 
 const inter = Inter({
@@ -10,6 +11,9 @@ const inter = Inter({
 });
 
 const siteUrl = "https://klyven.qzz.io";
+
+const siteVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "";
 
 export const metadata: Metadata = {
   title: {
@@ -28,10 +32,16 @@ export const metadata: Metadata = {
     "Pikoo OS",
     "digital products",
   ],
-  authors: [{ name: "KLYVEN" }],
+  authors: [
+    { name: "Naman Sharma", url: `${siteUrl}/team` },
+    { name: "Ayush Mishra", url: `${siteUrl}/team` },
+  ],
   creator: "KLYVEN",
   publisher: "KLYVEN",
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -74,6 +84,13 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+  ...(siteVerification
+    ? {
+        other: {
+          "google-site-verification": siteVerification,
+        },
+      }
+    : {}),
 };
 
 export const viewport: Viewport = {
@@ -85,39 +102,62 @@ export const viewport: Viewport = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "KLYVEN",
-  url: siteUrl,
-  logo: `${siteUrl}/logo.png`,
-  description:
-    "We build the foundational intelligence layer for next-generation software. AI-native, real-time, and secure by design.",
-  foundingDate: "2025",
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "sales",
-    url: `${siteUrl}#join`,
-  },
-  sameAs: ["https://github.com/klyven"],
-  offers: [
+  "@graph": [
     {
-      "@type": "Offer",
-      name: "Custom Software",
-      description: "Tailored AI-native platforms, APIs, and real-time systems",
+      "@type": "Organization",
+      name: "KLYVEN",
+      url: siteUrl,
+      logo: `${siteUrl}/logo.png`,
+      description:
+        "We build the foundational intelligence layer for next-generation software. AI-native, real-time, and secure by design.",
+      foundingDate: "2026",
+      founder: [
+        {
+          "@type": "Person",
+          name: "Naman Sharma",
+          url: `${siteUrl}/team`,
+          sameAs: ["https://www.instagram.com/naman.infinity"],
+        },
+        {
+          "@type": "Person",
+          name: "Ayush Mishra",
+          url: `${siteUrl}/team`,
+        },
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: "Klyven4UU@gmail.com",
+        url: `${siteUrl}#join`,
+      },
+      sameAs: ["https://github.com/klyven", "https://www.instagram.com/klyvenofficial"],
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Custom Software",
+          description: "Tailored AI-native platforms, APIs, and real-time systems",
+        },
+        {
+          "@type": "Offer",
+          name: "OS & Infrastructure",
+          description: "Operating systems, low-level tooling, and cloud-native infrastructure",
+        },
+        {
+          "@type": "Offer",
+          name: "Nexcarto",
+          description: "Next-generation geospatial platform",
+        },
+        {
+          "@type": "Offer",
+          name: "Pikoo OS",
+          description: "Custom operating system for specialized hardware",
+        },
+      ],
     },
     {
-      "@type": "Offer",
-      name: "OS & Infrastructure",
-      description: "Operating systems, low-level tooling, and cloud-native infrastructure",
-    },
-    {
-      "@type": "Offer",
-      name: "Nexcarto",
-      description: "Next-generation geospatial platform",
-    },
-    {
-      "@type": "Offer",
-      name: "Pikoo OS",
-      description: "Custom operating system for specialized hardware",
+      "@type": "WebSite",
+      name: "KLYVEN",
+      url: siteUrl,
     },
   ],
 };
@@ -133,7 +173,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

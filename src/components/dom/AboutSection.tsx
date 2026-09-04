@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useInView, motion } from "framer-motion";
 
 const STATS = [
-  { value: "2038", label: "Founded" },
+  { value: "2026", label: "Founded" },
   { value: "99.9%", label: "Uptime" },
   { value: "12M+", label: "Requests/Day" },
   { value: "150+", label: "Team Members" },

@@ -2,9 +2,19 @@
 
 import { useRef } from "react";
 import { useInView, motion } from "framer-motion";
+import Link from "next/link";
 import { useStore } from "@/lib/store";
 
-const LINKS = ["Services", "Products", "Open Source", "Careers", "Contact"];
+const LINKS = [
+  { label: "Services", href: "/#services" },
+  { label: "Products", href: "/#products" },
+  { label: "Open Source", href: "/#opensource" },
+  { label: "About", href: "/about" },
+  { label: "Team", href: "/team" },
+  { label: "Contact", href: "/contact" },
+];
+
+const year = new Date().getFullYear();
 
 export function FooterSection() {
   const ref = useRef(null);
@@ -38,18 +48,19 @@ export function FooterSection() {
         <div className="mt-6 h-px w-16 mx-auto bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
         <div className="flex justify-center gap-8 mt-8 flex-wrap">
           {LINKS.map((link) => (
-            <button
-              key={link}
+            <Link
+              key={link.label}
+              href={link.href}
               className="text-xs tracking-[0.3em] uppercase transition-all duration-300 text-blue-100/50 hover:text-blue-100/90"
               onMouseEnter={() => useStore.getState().setCursorVariant("hover")}
               onMouseLeave={() => useStore.getState().setCursorVariant("default")}
             >
-              {link}
-            </button>
+              {link.label}
+            </Link>
           ))}
         </div>
         <p className="mt-8 text-[10px] tracking-[0.25em] uppercase text-blue-100/20">
-          &copy; 2038 KLYVEN. All rights reserved.
+          &copy; {year} KLYVEN. All rights reserved.
         </p>
       </motion.div>
     </section>

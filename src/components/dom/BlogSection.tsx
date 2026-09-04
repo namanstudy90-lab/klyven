@@ -7,7 +7,7 @@ const POSTS = [
   {
     title: "Team of Lions — The Mindset",
     date: "July 5, 2026",
-    summary: "We don't follow trends. We forge them. A pack of relentless builders working in the shadows — identities hidden, impact undeniable.",
+    summary: "We don't follow trends. We forge them. A pack of relentless builders shaping tomorrow's technology — built in the open, impact undeniable.",
     tags: ["lions", "mindset"],
   },
   {

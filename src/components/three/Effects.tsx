@@ -16,8 +16,6 @@ export function Effects() {
       <ChromaticAberration
         offset={[0.002, 0.001]}
         radialModulation={false}
-        resolutionX={1024}
-        resolutionY={1024}
       />
       <Vignette offset={0.25} darkness={0.7} />
     </EffectComposer>
