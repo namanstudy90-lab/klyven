@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { useInView, motion } from "framer-motion";
+import Link from "next/link";
 import { JOIN_ROLES } from "@/lib/constants";
 import { useStore } from "@/lib/store";
 
@@ -33,7 +34,8 @@ export function JoinSection() {
               software, operating systems, and digital products. If you dream in
               code and think beyond the horizon, come build with us.
             </p>
-            <div
+            <Link
+              href="/contact"
               className="mt-8 inline-block text-xs tracking-[0.25em] uppercase py-4 px-10 rounded-full transition-all duration-500 text-blue-100/80"
               style={{
                 background: "rgba(0, 212, 255, 0.1)",
@@ -51,7 +53,7 @@ export function JoinSection() {
               }}
             >
               View Open Roles
-            </div>
+            </Link>
           </motion.div>
           <motion.div
             className="space-y-3"
@@ -60,9 +62,10 @@ export function JoinSection() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           >
             {JOIN_ROLES.map((role, i) => (
-              <div
+              <Link
                 key={role}
-                className="rounded-xl p-4 transition-all duration-500"
+                href="/contact"
+                className="block rounded-xl p-4 transition-all duration-500"
                 style={{
                   background: "rgba(10, 14, 30, 0.7)",
                   border: "1px solid rgba(0, 212, 255, 0.06)",
@@ -71,10 +74,12 @@ export function JoinSection() {
                   opacity: isInView ? 1 : 0,
                   transition: `all 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 0.1 + 0.3}s`,
                 }}
+                onMouseEnter={() => useStore.getState().setCursorVariant("hover")}
+                onMouseLeave={() => useStore.getState().setCursorVariant("default")}
               >
                 <span className="text-sm tracking-[0.15em] text-blue-100/70">{role}</span>
                 <span className="float-right text-xs text-cyan-400/40">→</span>
-              </div>
+              </Link>
             ))}
           </motion.div>
         </div>

@@ -2,6 +2,7 @@
 
 import { useStore } from "@/lib/store";
 import { useState } from "react";
+import Link from "next/link";
 
 export function CTASection() {
   const [email, setEmail] = useState("");
@@ -29,8 +30,8 @@ export function CTASection() {
             for you here.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <a
-              href="#"
+            <Link
+              href="/contact"
               className="flex-1 py-4 px-6 rounded-full text-xs tracking-[0.25em] uppercase transition-all duration-500 text-center text-white"
               style={{
                 background: "linear-gradient(135deg, rgba(0,212,255,0.2), rgba(123,47,247,0.2))",
@@ -50,8 +51,8 @@ export function CTASection() {
               }}
             >
               Get Started Free
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
               className="flex-1 py-4 px-6 rounded-full text-xs tracking-[0.25em] uppercase transition-all duration-500 text-center text-blue-100/70"
               style={{
@@ -70,7 +71,7 @@ export function CTASection() {
               }}
             >
               Partner With Us
-            </a>
+            </Link>
           </div>
           <div className="mt-8 flex items-center justify-center gap-3">
             <input

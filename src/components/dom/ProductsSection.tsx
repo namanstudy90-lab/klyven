@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { useInView, motion } from "framer-motion";
+import Link from "next/link";
 import { PRODUCTS } from "@/lib/constants";
 import { useStore } from "@/lib/store";
 
@@ -67,16 +68,35 @@ export function ProductsSection() {
               <p className="text-xs tracking-[0.2em] uppercase mb-2 text-blue-100/50">{product.tagline}</p>
               <p className="text-sm leading-relaxed text-blue-100/70">{product.description}</p>
             </div>
-            <div
-              className="shrink-0 text-xs tracking-[0.2em] uppercase py-3 px-6 rounded-full transition-all duration-300 text-center"
-              style={{
-                background: `${product.color}15`,
-                border: `1px solid ${product.color}30`,
-                color: product.color,
-              }}
-            >
-              {product.status === "live" ? "Explore" : product.status === "coming soon" ? "Notify Me" : "View Tools"}
-            </div>
+            {product.status === "free" ? (
+              <a
+                href="https://github.com/klyven"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 text-xs tracking-[0.2em] uppercase py-3 px-6 rounded-full transition-all duration-300 text-center"
+                style={{
+                  background: `${product.color}15`,
+                  border: `1px solid ${product.color}30`,
+                  color: product.color,
+                }}
+              >
+                View Tools
+              </a>
+            ) : (
+              <Link
+                href="/contact"
+                className="shrink-0 text-xs tracking-[0.2em] uppercase py-3 px-6 rounded-full transition-all duration-300 text-center"
+                style={{
+                  background: `${product.color}15`,
+                  border: `1px solid ${product.color}30`,
+                  color: product.color,
+                }}
+                onMouseEnter={() => useStore.getState().setCursorVariant("hover")}
+                onMouseLeave={() => useStore.getState().setCursorVariant("default")}
+              >
+                {product.status === "live" ? "Explore" : "Notify Me"}
+              </Link>
+            )}
           </div>
         ))}
       </div>

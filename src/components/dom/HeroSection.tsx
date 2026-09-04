@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useStore } from "@/lib/store";
 
 export function HeroSection() {
@@ -67,7 +68,8 @@ export function HeroSection() {
           transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
           className="mt-14"
         >
-          <button
+          <Link
+            href="/#services"
             className="px-10 py-4 rounded-full text-xs tracking-[0.3em] uppercase transition-all duration-500"
             style={{
               background: "linear-gradient(135deg, rgba(0,212,255,0.2), rgba(123,47,247,0.2))",
@@ -88,7 +90,7 @@ export function HeroSection() {
             }}
           >
             Explore Our World
-          </button>
+          </Link>
         </motion.div>
         <motion.div
           className="flex flex-col items-center gap-2 mt-20"

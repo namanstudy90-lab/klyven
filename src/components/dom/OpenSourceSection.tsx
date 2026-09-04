@@ -38,7 +38,10 @@ export function OpenSourceSection() {
             are open source and free for everyone — and our commercial products fund the work
             that keeps them that way. A healthy mix of open and sustainable.
           </p>
-          <div
+          <a
+            href="https://github.com/klyven"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-10 inline-block text-xs tracking-[0.25em] uppercase py-4 px-10 rounded-full transition-all duration-500 text-blue-100/80"
             style={{
               background: "rgba(255, 45, 120, 0.1)",
@@ -56,7 +59,7 @@ export function OpenSourceSection() {
             }}
           >
             Browse GitHub
-          </div>
+          </a>
         </div>
       </motion.div>
     </section>
