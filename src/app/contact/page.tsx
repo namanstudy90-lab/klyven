@@ -50,8 +50,7 @@ export default function ContactPage() {
           <div className="my-8 h-px w-24" style={{ background: "linear-gradient(to right, rgba(0,212,255,0.4), transparent)" }} />
           <p className="text-sm md:text-base leading-relaxed text-blue-100/80 max-w-xl">
             Whether you&apos;re a founder, developer, or dreamer with the next big idea,
-            we&apos;d love to hear from you. Reach us on Instagram while we set up our
-            official contact email.
+            we&apos;d love to hear from you. Reach us by email or on Instagram.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
@@ -83,10 +82,10 @@ export default function ContactPage() {
               }}
             >
               <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: "rgba(255,45,120,0.7)" }}>
-                Co-Founder
+                Founder
               </span>
               <h2 className="mt-3 text-lg text-white">@naman.infinity</h2>
-              <p className="mt-3 text-sm text-blue-100/60">Reach Naman Sharma, co-founder of KLYVEN.</p>
+              <p className="mt-3 text-sm text-blue-100/60">Reach Naman Sharma, founder of KLYVEN.</p>
             </a>
           </div>
 

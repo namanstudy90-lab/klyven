@@ -46,7 +46,19 @@ export function AboutSection() {
             KLYVEN is a parent company building the foundational layer for tomorrow&apos;s
             technology. From custom software and AI-powered operating systems to digital
             products that connect communities — we build at every level of the stack.
-            Open source, accessible, and built for the future.
+            Some things we open source, some things we build commercially. All of it
+            engineered to last.
+          </p>
+          <p className="mt-6 text-sm md:text-base leading-relaxed max-w-xl mx-auto text-blue-100/70">
+            KLYVEN was founded by{" "}
+            <a href="/team" className="text-cyan-400">
+              Naman Sharma
+            </a>{" "}
+            and{" "}
+            <a href="/team" className="text-cyan-400">
+              Ayush Mishra
+            </a>
+            .
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
             {STATS.map((stat, i) => (

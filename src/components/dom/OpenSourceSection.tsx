@@ -30,13 +30,13 @@ export function OpenSourceSection() {
         >
           <span className="text-4xl mb-4 block text-pink-400/60">&lt;/&gt;</span>
           <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-extralight tracking-[-0.03em] leading-[1.05] text-white">
-            Free &amp; <span className="text-pink-400">Open Source</span>
+            Built in the <span className="text-pink-400">Open</span>
           </h2>
           <div className="mt-6 h-px w-20 mx-auto bg-gradient-to-r from-transparent via-pink-400/40 to-transparent" />
           <p className="mt-6 text-sm md:text-base leading-relaxed max-w-lg mx-auto text-blue-100/70">
-            Every great platform starts with a community. We believe in building in the open.
-            Our tools, libraries, and frameworks are free for everyone — because the future
-            shouldn&apos;t have a paywall.
+            We believe great software should be shared. Our tools, libraries, and frameworks
+            are open source and free for everyone — and our commercial products fund the work
+            that keeps them that way. A healthy mix of open and sustainable.
           </p>
           <div
             className="mt-10 inline-block text-xs tracking-[0.25em] uppercase py-4 px-10 rounded-full transition-all duration-500 text-blue-100/80"

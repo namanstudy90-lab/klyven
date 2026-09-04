@@ -53,6 +53,14 @@ export function HeroSection() {
         >
           Software · OS · Digital Products
         </motion.p>
+        <motion.p
+          className="mt-4 text-[11px] tracking-[0.3em] uppercase text-white/40"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1.2, ease: "easeOut" }}
+        >
+          Founded by Naman Sharma &amp; Ayush Mishra
+        </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

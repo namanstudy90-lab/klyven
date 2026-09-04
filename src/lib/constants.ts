@@ -38,6 +38,7 @@ export const PRODUCTS = [
     tagline: "Food delivery for local people",
     description: "Connecting neighborhoods with local restaurants and shops. Fast, reliable, and community-first delivery powered by intelligent routing.",
     status: "live",
+    price: "Paid",
     color: "#00d4ff",
   },
   {
@@ -45,6 +46,7 @@ export const PRODUCTS = [
     tagline: "Your personal AI operating system",
     description: "An OS that learns from you, adapts to your workflow, and puts AI-driven productivity at the core of every interaction.",
     status: "coming soon",
+    price: "Paid",
     color: "#7b2ff7",
   },
   {
@@ -52,6 +54,7 @@ export const PRODUCTS = [
     tagline: "Open-source for everyone",
     description: "A collection of free, open-source tools and libraries for developers, researchers, and builders. MIT-licensed and community-driven.",
     status: "free",
+    price: "Free",
     color: "#ff2d78",
   },
 ];

@@ -31,15 +31,15 @@ const breadcrumbLd = {
 const founders = [
   {
     name: "Naman Sharma",
-    role: "Co-Founder",
+    role: "Founder",
     bio: "Naman Sharma co-founded KLYVEN with the conviction that software should be built to last — fast, intelligent, and open. He drives the vision for AI-native platforms and real-time systems.",
     instagram: "https://www.instagram.com/naman.infinity",
     instagramHandle: "@naman.infinity",
   },
   {
     name: "Ayush Mishra",
-    role: "Co-Founder",
-    bio: "Ayush Mishra co-founded KLYVEN to reshape how communities and people interact with technology. He focuses on products, operating systems, and experiences built for the future.",
+    role: "Founder",
+    bio: "Ayush Mishra co-founded KLYVEN to reshape how people and communities interact with technology. He focuses on products, operating systems, and experiences built for the future.",
     instagram: null,
     instagramHandle: null,
   },
@@ -126,21 +126,24 @@ export default function TeamPage() {
           </div>
 
           <div
-            className="rounded-2xl p-6 mt-8"
+            className="rounded-2xl p-8 mt-8"
             style={{
-              background: "rgba(10, 14, 30, 0.5)",
-              border: "1px solid rgba(0, 212, 255, 0.08)",
+              background: "linear-gradient(135deg, rgba(0,212,255,0.08), rgba(123,47,247,0.08))",
+              border: "1px solid rgba(0, 212, 255, 0.15)",
             }}
           >
-            <p className="text-xs tracking-[0.25em] uppercase" style={{ color: "rgba(0, 212, 255, 0.6)" }}>
+            <p className="text-xs tracking-[0.25em] uppercase" style={{ color: "rgba(0, 212, 255, 0.7)" }}>
               We&apos;re hiring
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-blue-100/70">
-              KLYVEN is currently growing its leadership. We&apos;re hiring a{" "}
+            <p className="mt-4 text-sm md:text-base leading-relaxed text-blue-100/80">
+              KLYVEN is growing its leadership. We&apos;re hiring a{" "}
               <strong style={{ color: "#fff" }}>CEO</strong> and additional{" "}
               <strong style={{ color: "#fff" }}>co-founders</strong> to help build the next
-              generation of software. If that&apos;s you,{" "}
-              <a href="/contact" style={{ color: "#00d4ff" }}>get in touch</a>.
+              generation of software. If that sounds like you,{" "}
+              <a href="/contact" style={{ color: "#00d4ff" }}>
+                get in touch
+              </a>
+              — we&apos;d love to talk.
             </p>
           </div>
         </div>

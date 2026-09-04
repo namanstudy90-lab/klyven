@@ -52,7 +52,7 @@ export function CTASection() {
               Get Started Free
             </a>
             <a
-              href="#"
+              href="/contact"
               className="flex-1 py-4 px-6 rounded-full text-xs tracking-[0.25em] uppercase transition-all duration-500 text-center text-blue-100/70"
               style={{
                 background: "rgba(255,255,255,0.04)",

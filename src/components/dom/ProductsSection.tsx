@@ -53,6 +53,16 @@ export function ProductsSection() {
                 >
                   {product.status}
                 </span>
+                <span
+                  className="text-[9px] tracking-[0.2em] uppercase px-3 py-1 rounded-full"
+                  style={{
+                    background: product.price === "Free" ? "rgba(255,45,120,0.12)" : "rgba(0,212,255,0.1)",
+                    border: `1px solid ${product.price === "Free" ? "rgba(255,45,120,0.3)" : "rgba(0,212,255,0.25)"}`,
+                    color: product.price === "Free" ? "#ff2d78" : "#00d4ff",
+                  }}
+                >
+                  {product.price === "Free" ? "Open Source" : "Paid"}
+                </span>
               </div>
               <p className="text-xs tracking-[0.2em] uppercase mb-2 text-blue-100/50">{product.tagline}</p>
               <p className="text-sm leading-relaxed text-blue-100/70">{product.description}</p>
