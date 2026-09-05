@@ -23,6 +23,11 @@ const ProductsSection = dynamic(
   { ssr: false }
 );
 
+const SchoolsSection = dynamic(
+  () => import("@/components/dom/SchoolsSection").then((m) => ({ default: m.SchoolsSection })),
+  { ssr: false }
+);
+
 const OpenSourceSection = dynamic(
   () => import("@/components/dom/OpenSourceSection").then((m) => ({ default: m.OpenSourceSection })),
   { ssr: false }
@@ -65,6 +70,7 @@ export default function Home() {
       <div className="relative z-10">
         <HeroSection />
         <ServicesSection />
+        <SchoolsSection />
         <ProductsSection />
         <OpenSourceSection />
         <ResearchSection />
