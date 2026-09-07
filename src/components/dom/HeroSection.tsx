@@ -14,38 +14,23 @@ export function HeroSection() {
     <section className="relative w-full h-screen flex items-center justify-center select-none overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#060914]/60 via-transparent to-[#060914]/60" />
       <div className="relative text-center" style={{ opacity, transform: `translateY(${y}px)` }}>
-        <motion.div
+        <motion.h1
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center"
         >
-          <h1
-            className="text-[clamp(5rem,15vw,13rem)] font-extralight tracking-[-0.06em] leading-[0.8]"
-            style={{
-              background: "linear-gradient(180deg, #ffffff 0%, #a0c4ff 40%, #00d4ff 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              filter: "drop-shadow(0 0 40px rgba(0,212,255,0.2))",
-            }}
+          <span
+            className="block bg-gradient-to-b from-white via-[#a0c4ff] to-[#00d4ff] bg-clip-text text-transparent text-[clamp(5rem,15vw,13rem)] font-extralight tracking-[-0.06em] leading-[0.8]"
+            style={{ filter: "drop-shadow(0 0 40px rgba(0,212,255,0.2))" }}
           >
             KLYVEN
-          </h1>
-        </motion.div>
-        <motion.div
-          className="mt-8 h-px w-20 mx-auto bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent"
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
-        />
-        <motion.p
-          className="mt-8 text-sm tracking-[0.45em] uppercase text-white/70"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 1.2, ease: "easeOut" }}
-        >
-          Build the Future
-        </motion.p>
+          </span>
+          <span className="block mt-8 h-px w-20 mx-auto bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
+          <span className="block mt-8 text-sm tracking-[0.45em] uppercase text-white/70">
+            Build the Future
+          </span>
+        </motion.h1>
         <motion.p
           className="mt-3 text-[11px] tracking-[0.3em] uppercase text-white/30"
           initial={{ opacity: 0, y: 12 }}
