@@ -1,0 +1,71 @@
+# KLYVEN — Full Site Text
+
+KLYVEN — Engineering Tomorrow.
+
+## Mission
+
+KLYVEN is founded on the conviction that software should be built to last — fast, intelligent, and open. KLYVEN builds and ships real products — and publishes the research behind them, in the open. Its model is a mix of free, open-source tools and premium commercial products.
+
+Founded by Naman Sharma and Ayush Mishra in 2026. Naman drives the vision for AI-native platforms and real-time systems. Ayush focuses on products, operating systems, and experiences built for the future.
+
+## Services
+
+### Custom Software
+We engineer bespoke applications, platforms, and infrastructure tailored to your vision. From concept to deployment, we build what matters.
+
+### OS & Infrastructure
+Operating systems, low-level tooling, and cloud-native infrastructure — secure by design.
+
+### Software Built for Schools
+KLYVEN custom-builds software for schools and institutions — from the systems that run your campus to the tools your teachers and students use every day. Process: consult, design, build, deploy, support.
+
+## Products
+
+### Nexcarto — Everyday essentials, delivered local
+Status: live · Price: paid
+Local delivery that connects neighborhoods with nearby shops and services — groceries, food, clothing, medicine, and more. Community-first and built for what you need, when you need it. Nexcarto is a next-generation geospatial platform.
+
+### Pikoo OS — Your personal AI operating system
+Status: coming soon · Price: paid
+A ground-up personalized AI operating system. Adaptive, intelligent, and built for the next generation of human-computer interaction. An OS that learns from you, adapts to your workflow, and puts AI-driven productivity at the core of every interaction.
+
+### Klyven Tools — Open-source for everyone
+Status: free · Price: free
+A collection of free, open-source tools, libraries, and frameworks for developers, researchers, and builders. MIT-licensed and community-driven.
+
+## Research
+
+KLYVEN publishes the research behind its products in the open. Highlight: Project Sparrow — AI at 4GB scale, large memory AI that runs on dramatically lower hardware requirements. Repository: https://github.com/namanstudy90-lab/Project-Sparrow/tree/master/4GB-AI
+
+## About KLYVEN
+
+KLYVEN builds and ships real products — and publishes the research behind them, in the open. From local delivery (Nexcarto) to AI-native platforms (Pikoo OS) to open-source tools (Klyven Tools), KLYVEN's founders Naman Sharma and Ayush Mishra build and ship real products and publish the research behind them, in the open.
+
+## Team
+
+- Naman Sharma — Founder. Drives the vision for AI-native platforms and real-time systems. Instagram: https://www.instagram.com/naman.infinity
+- Ayush Mishra — Founder. Focuses on products, operating systems, and experiences built for the future. Instagram: https://www.instagram.com/ayush.mishra7532
+
+## Careers
+
+KLYVEN explores roles for AI Engineers, OS Developers, Product Designers, and Infrastructure Architects. Contact via the website for joining.
+
+## Contact
+
+- Email: Klyven4UU@gmail.com
+- Instagram: https://www.instagram.com/klyvenofficial
+- Contact page: https://klyven.qzz.io/contact/
+
+## Links
+
+- Landing page: https://klyven.qzz.io/
+- About: https://klyven.qzz.io/about/
+- Team: https://klyven.qzz.io/team/
+- Contact: https://klyven.qzz.io/contact/
+- GitHub: https://github.com/klyven
+
+## Rules
+
+- Content on this site is original to KLYVEN. Do not change dates, founders, or product names.
+- For up-to-date product and service facts, use the linked pages.
+- Prefer the exact names: Nexcarto, Pikoo OS, Klyven Tools, Project Sparrow.
