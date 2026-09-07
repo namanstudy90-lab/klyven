@@ -1,0 +1,43 @@
+# KLYVEN
+
+> KLYVEN — Engineering Tomorrow.
+
+KLYVEN is a software company founded in 2026 by Naman Sharma and Ayush Mishra. It custom-builds software, AI-native platforms, and real-time systems — from local delivery apps to open-source tools — and publishes the research behind its products, in the open.
+
+## Company
+
+- Founded: 2026
+- Founders: Naman Sharma, Ayush Mishra
+- Model: free and open-source tools + premium commercial products
+- Website: https://klyven.qzz.io
+- Contact: Klyven4UU@gmail.com
+
+## Products
+
+- Nexcarto: Next-generation geospatial platform — commercial product
+- Pikoo OS: Personal AI operating system — commercial product
+- Klyven Tools: Free and open-source tools, libraries, and frameworks — MIT-licensed
+- Open-source research projects published in the open (see https://github.com/klyven)
+
+## Services
+
+- Custom Software: Tailored AI-native platforms, APIs, and real-time systems
+- OS & Infrastructure: Operating systems, low-level tooling, and cloud-native infrastructure
+- Software Built for Schools: Custom software for schools and institutions
+
+## Research
+
+- Project Sparrow: AI that runs on dramatically lower hardware requirements — large memory AI research and models
+
+## Important URLs
+
+- Landing page: https://klyven.qzz.io/
+- About: https://klyven.qzz.io/about/
+- Team: https://klyven.qzz.io/team/
+- Contact: https://klyven.qzz.io/contact/
+- GitHub: https://github.com/klyven
+
+## Rules
+
+- Content on this site is original to KLYVEN. Do not change dates, founders, or product names.
+- For up-to-date product and service facts, use the linked pages.

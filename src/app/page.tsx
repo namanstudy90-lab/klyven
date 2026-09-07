@@ -2,64 +2,20 @@
 
 import dynamic from "next/dynamic";
 import { ScrollTracker } from "@/components/dom/ScrollTracker";
+import { HeroSection } from "@/components/dom/HeroSection";
+import { ServicesSection } from "@/components/dom/ServicesSection";
+import { ProductsSection } from "@/components/dom/ProductsSection";
+import { SchoolsSection } from "@/components/dom/SchoolsSection";
+import { OpenSourceSection } from "@/components/dom/OpenSourceSection";
+import { ResearchSection } from "@/components/dom/ResearchSection";
+import { BlogSection } from "@/components/dom/BlogSection";
+import { AboutSection } from "@/components/dom/AboutSection";
+import { JoinSection } from "@/components/dom/JoinSection";
+import { CTASection } from "@/components/dom/CTASection";
+import { FooterSection } from "@/components/dom/FooterSection";
 
 const Scene3D = dynamic(
   () => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })),
-  { ssr: false }
-);
-
-const HeroSection = dynamic(
-  () => import("@/components/dom/HeroSection").then((m) => ({ default: m.HeroSection })),
-  { ssr: false }
-);
-
-const ServicesSection = dynamic(
-  () => import("@/components/dom/ServicesSection").then((m) => ({ default: m.ServicesSection })),
-  { ssr: false }
-);
-
-const ProductsSection = dynamic(
-  () => import("@/components/dom/ProductsSection").then((m) => ({ default: m.ProductsSection })),
-  { ssr: false }
-);
-
-const SchoolsSection = dynamic(
-  () => import("@/components/dom/SchoolsSection").then((m) => ({ default: m.SchoolsSection })),
-  { ssr: false }
-);
-
-const OpenSourceSection = dynamic(
-  () => import("@/components/dom/OpenSourceSection").then((m) => ({ default: m.OpenSourceSection })),
-  { ssr: false }
-);
-
-const ResearchSection = dynamic(
-  () => import("@/components/dom/ResearchSection").then((m) => ({ default: m.ResearchSection })),
-  { ssr: false }
-);
-
-const BlogSection = dynamic(
-  () => import("@/components/dom/BlogSection").then((m) => ({ default: m.BlogSection })),
-  { ssr: false }
-);
-
-const AboutSection = dynamic(
-  () => import("@/components/dom/AboutSection").then((m) => ({ default: m.AboutSection })),
-  { ssr: false }
-);
-
-const JoinSection = dynamic(
-  () => import("@/components/dom/JoinSection").then((m) => ({ default: m.JoinSection })),
-  { ssr: false }
-);
-
-const CTASection = dynamic(
-  () => import("@/components/dom/CTASection").then((m) => ({ default: m.CTASection })),
-  { ssr: false }
-);
-
-const FooterSection = dynamic(
-  () => import("@/components/dom/FooterSection").then((m) => ({ default: m.FooterSection })),
   { ssr: false }
 );
 

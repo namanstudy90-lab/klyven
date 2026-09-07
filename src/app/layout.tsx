@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | KLYVEN",
   },
   description:
-    "KLYVEN builds and ships real products — and publishes the research behind them, in the open. From local delivery to open-source tools.",
+    "KLYVEN — Engineering Tomorrow. Founded by Naman Sharma and Ayush Mishra in 2026. KLYVEN builds and ships real products — Nexcarto, Pikoo OS, and open-source tools — and publishes the research behind them, in the open.",
   keywords: [
     "KLYVEN",
     "custom software development",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "KLYVEN",
     title: "KLYVEN — Engineering Tomorrow",
     description:
-      "KLYVEN builds and ships real products — and publishes the research behind them, in the open. From local delivery to open-source tools.",
+      "KLYVEN — Engineering Tomorrow. Founded by Naman Sharma and Ayush Mishra in 2026. KLYVEN builds and ships real products — Nexcarto, Pikoo OS, and open-source tools — and publishes the research behind them, in the open.",
     images: [
       {
         url: "/og.png",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "KLYVEN — Engineering Tomorrow",
     description:
-      "KLYVEN builds and ships real products — and publishes the research behind them, in the open. From local delivery to open-source tools.",
+      "KLYVEN — Engineering Tomorrow. Founded by Naman Sharma and Ayush Mishra in 2026. KLYVEN builds and ships real products — Nexcarto, Pikoo OS, and open-source tools — and publishes the research behind them, in the open.",
     images: ["/og.png"],
     creator: "@klyven",
   },
