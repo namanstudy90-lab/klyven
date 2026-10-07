@@ -16,9 +16,16 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
+      - name: Ping IndexNow (Bing / ChatGPT search)
+        run: |
+          KEY="de6a8d5568b7aed110711609b1f69136"
+          for url in "https://klyven.qzz.io/" "https://klyven.qzz.io/about/" "https://klyven.qzz.io/team/" "https://klyven.qzz.io/contact/"; do
+            curl -s -o /dev/null -w "%{http_code} $url\n" \
+              "https://api.indexnow.org/indexnow?url=${url}&key=${KEY}"
+          done
