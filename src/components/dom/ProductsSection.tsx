@@ -27,7 +27,7 @@ export function ProductsSection() {
         <div className="mt-3 h-px w-12 mx-auto bg-gradient-to-r from-transparent via-violet-400/40 to-transparent" />
       </motion.div>
       <div className="relative max-w-6xl w-full px-4 space-y-8 md:space-y-12">
-        {PRODUCTS.map((product, i) => (
+            {PRODUCTS.map((product, i) => (
           <div
             key={product.name}
             className="rounded-3xl p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-10 transition-all duration-700"
@@ -70,7 +70,19 @@ export function ProductsSection() {
               <p className="text-xs tracking-[0.2em] uppercase mb-3 text-blue-100/50">{product.tagline}</p>
               <p className="text-sm md:text-[15px] leading-relaxed text-blue-100/70 max-w-2xl">{product.description}</p>
             </div>
-            {product.status === "free" ? (
+            {product.name === "ClassSync" ? (
+              <Link
+                href="/classsync/"
+                className="shrink-0 text-xs tracking-[0.2em] uppercase py-4 px-8 rounded-full transition-all duration-300 text-center"
+                style={{
+                  background: `${product.color}12`,
+                  border: `1px solid ${product.color}28`,
+                  color: product.color,
+                }}
+              >
+                Explore ClassSync
+              </Link>
+            ) : product.status === "free" ? (
               <a
                 href="https://github.com/klyven"
                 target="_blank"

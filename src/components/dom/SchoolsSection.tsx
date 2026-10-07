@@ -33,16 +33,16 @@ export function SchoolsSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         >
           <h2 className="mt-6 text-[clamp(2rem,4vw,3.5rem)] font-extralight tracking-[-0.03em] leading-[1.05] text-white">
-            Software Built for{" "}
-            <span className="text-cyan-400">Every School</span>
+            A brighter way to build{" "}
+            <span className="text-cyan-400">school software</span>
           </h2>
           <p className="mt-6 text-sm md:text-base leading-relaxed text-blue-100/70 max-w-xl mx-auto">
-            KLYVEN custom-builds software for schools and institutions — from
-            the systems that run your campus to the tools your teachers and
-            students use every day.
+            Meet ClassSync, our first education product — turning a teacher&apos;s
+            recorded class into a clear, animated lesson that never wastes a
+            day.
           </p>
           <Link
-            href="/contact"
+            href="/classsync/"
             className="mt-10 inline-block text-xs tracking-[0.25em] uppercase py-4 px-10 rounded-full transition-all duration-500 text-white"
             style={{
               background: "rgba(0,212,255,0.15)",

@@ -34,6 +34,14 @@ export const SERVICES = [
 
 export const PRODUCTS = [
   {
+    name: "ClassSync",
+    tagline: "Never a wasted class",
+    description: "An AI teaching companion that turns recorded lessons into substitute-ready scripts, animated visuals, practice, and homework for schools.",
+    status: "live",
+    price: "Paid",
+    color: "#ff9f68",
+  },
+  {
     name: "Nexcarto",
     tagline: "Everyday essentials, delivered local",
     description: "Local delivery that connects neighborhoods with nearby shops and services — groceries, food, clothing, medicine, and more. Community-first and built for what you need, when you need it.",
