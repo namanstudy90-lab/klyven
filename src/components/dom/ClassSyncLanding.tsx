@@ -1,120 +1,63 @@
 "use client";
 
 import Link from "next/link";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Line, OrbitControls, Sparkles, Text } from "@react-three/drei";
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import type { Group, Mesh } from "three";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const appUrl = "https://classsync-alpha.vercel.app";
 
-function LessonBook() {
-  const book = useRef<Group>(null);
-  const pageLeft = useRef<Mesh>(null);
-  const pageRight = useRef<Mesh>(null);
+const workflow = [
+  { label: "Record", title: "Capture the explanation", copy: "Keep the teacher's thinking, not just the notes.", icon: "01" },
+  { label: "Transform", title: "Make the idea visible", copy: "ClassSync turns the recording into a lesson students can follow.", icon: "02" },
+  { label: "Understand", title: "Find the important parts", copy: "Key concepts, examples, and a clear path are ready to review.", icon: "03" },
+  { label: "Continue", title: "Give learning a next step", copy: "Practice and homework keep the lesson moving after class.", icon: "04" },
+];
 
-  useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-    if (book.current) {
-      book.current.rotation.y = Math.sin(time * 0.35) * 0.18;
-      book.current.rotation.x = -0.08 + Math.sin(time * 0.55) * 0.025;
-      book.current.position.y = Math.sin(time * 0.7) * 0.14;
-    }
-    if (pageLeft.current) pageLeft.current.rotation.y = -0.16 + Math.sin(time * 0.8) * 0.025;
-    if (pageRight.current) pageRight.current.rotation.y = 0.16 - Math.sin(time * 0.8) * 0.025;
-  });
+const lessonCards = [
+  { type: "concept", label: "KEY CONCEPT", title: "Photosynthesis", copy: "Plants convert light energy into chemical energy." },
+  { type: "example", label: "VISUAL EXAMPLE", title: "Light → energy", copy: "See the process in three connected steps." },
+  { type: "next", label: "NEXT STEP", title: "Check your understanding", copy: "Answer 3 quick questions before you move on." },
+];
 
+function Arrow() { return <span aria-hidden="true" className="cs-arrow">↗</span>; }
+
+function ProductWindow({ compact = false }: { compact?: boolean }) {
+  const [active, setActive] = useState(1);
+  useEffect(() => {
+    const timer = window.setInterval(() => setActive((current) => (current + 1) % 3), 3600);
+    return () => window.clearInterval(timer);
+  }, []);
   return (
-    <group ref={book} position={[0, 0, 0]}>
-      <mesh position={[0, -0.12, -0.12]} rotation={[0, 0, 0]}>
-        <boxGeometry args={[3.95, 2.45, 0.18]} />
-        <meshStandardMaterial color="#111a3b" roughness={0.28} metalness={0.25} />
-      </mesh>
-      <mesh ref={pageLeft} position={[-0.94, 0.05, 0.08]} rotation={[0, -0.16, 0]}>
-        <boxGeometry args={[1.86, 2.28, 0.075]} />
-        <meshStandardMaterial color="#fff6e8" roughness={0.7} />
-      </mesh>
-      <mesh ref={pageRight} position={[0.94, 0.05, 0.08]} rotation={[0, 0.16, 0]}>
-        <boxGeometry args={[1.86, 2.28, 0.075]} />
-        <meshStandardMaterial color="#fff6e8" roughness={0.7} />
-      </mesh>
-      <mesh position={[0, 0.1, 0.15]}>
-        <boxGeometry args={[0.075, 2.26, 0.1]} />
-        <meshStandardMaterial color="#ff806b" emissive="#ff806b" emissiveIntensity={0.3} />
-      </mesh>
-
-      <Text position={[-1.48, 0.72, 0.18]} rotation={[0, 0, 0]} fontSize={0.12} color="#64709a" anchorX="left" anchorY="middle">LESSON 01</Text>
-      <Text position={[-1.48, 0.4, 0.18]} fontSize={0.22} color="#18234f" anchorX="left" anchorY="middle">Photosynthesis</Text>
-      <mesh position={[-1.08, -0.28, 0.18]}>
-        <circleGeometry args={[0.44, 32]} />
-        <meshStandardMaterial color="#bfead6" emissive="#80d8b2" emissiveIntensity={0.18} />
-      </mesh>
-      <Text position={[-1.08, -0.28, 0.2]} fontSize={0.35} anchorX="center" anchorY="middle">🌱</Text>
-      <mesh position={[-1.48, -0.78, 0.18]}><boxGeometry args={[1.25, 0.055, 0.02]} /><meshStandardMaterial color="#e8dccb" /></mesh>
-      <mesh position={[-1.48, -0.62, 0.18]}><boxGeometry args={[1.55, 0.055, 0.02]} /><meshStandardMaterial color="#eee5d7" /></mesh>
-
-      <Text position={[0.45, 0.72, 0.18]} fontSize={0.12} color="#64709a" anchorX="left" anchorY="middle">VISUAL GUIDE</Text>
-      <mesh position={[0.82, 0.05, 0.18]}>
-        <torusGeometry args={[0.47, 0.055, 12, 48]} />
-        <meshStandardMaterial color="#625cf5" emissive="#625cf5" emissiveIntensity={0.45} />
-      </mesh>
-      <mesh position={[0.82, 0.05, 0.18]}>
-        <sphereGeometry args={[0.12, 24, 24]} />
-        <meshStandardMaterial color="#ff806b" emissive="#ff806b" emissiveIntensity={0.9} />
-      </mesh>
-      <mesh position={[0.45, -0.73, 0.18]}><boxGeometry args={[1.45, 0.055, 0.02]} /><meshStandardMaterial color="#d8d4f9" /></mesh>
-      <mesh position={[0.45, -0.57, 0.18]}><boxGeometry args={[1.05, 0.055, 0.02]} /><meshStandardMaterial color="#e6e3fa" /></mesh>
-    </group>
+    <div className={`cs-product-window ${compact ? "cs-product-window-compact" : ""}`}>
+      <div className="cs-window-chrome"><div className="cs-window-dots"><i /><i /><i /></div><span>classsync / lesson workspace</span><span className="cs-window-status"><b /> Autosaved</span></div>
+      <div className="cs-workspace">
+        <aside className="cs-sidebar"><div className="cs-workspace-logo"><span>CS</span><strong>ClassSync</strong></div><p className="cs-sidebar-label">MY WORKSPACE</p><div className="cs-sidebar-item cs-sidebar-item-active"><span className="cs-sidebar-icon">▣</span> Lesson studio</div><div className="cs-sidebar-item"><span className="cs-sidebar-icon">◷</span> Recent lessons</div><div className="cs-sidebar-item"><span className="cs-sidebar-icon">⌁</span> Student progress</div><div className="cs-sidebar-spacer" /><div className="cs-teacher"><span className="cs-avatar">NS</span><span><strong>Naman Sharma</strong><small>Science · Grade 8</small></span><span>•••</span></div></aside>
+        <div className="cs-main-panel"><div className="cs-workspace-head"><div><span className="cs-breadcrumb">LESSON STUDIO / BIOLOGY</span><h3>How plants make food</h3><p>Recorded today · 42 min class</p></div><button className="cs-share-button">Share lesson <Arrow /></button></div><div className="cs-progress-row"><div className="cs-progress-track"><motion.div animate={{ width: `${34 + active * 25}%` }} transition={{ duration: .7 }} /></div><span>{active === 0 ? "Recording" : active === 1 ? "Building lesson" : "Ready to teach"}</span></div><div className="cs-recording-card"><div className="cs-recording-top"><span className="cs-live-dot" /> <strong>{active === 0 ? "Processing your recording" : "Class recording"}</strong><span>12:48 / 42:06</span></div><div className="cs-waveform">{Array.from({ length: 46 }, (_, index) => <i key={index} style={{ height: `${18 + ((index * 17) % 48)}%`, opacity: index < 18 + active * 12 ? 1 : .22 }} />)}</div><div className="cs-recording-footer"><span>◀</span><div className="cs-mini-track"><b style={{ width: `${38 + active * 18}%` }} /></div><span>1.0×</span><span className="cs-recording-note">● Key moment at 12:48</span></div></div><div className="cs-section-heading"><div><span className="cs-breadcrumb">GENERATED LESSON</span><h4>Visual learning path</h4></div><span className="cs-card-count">3 cards ready</span></div><div className="cs-lesson-cards"><AnimatePresence mode="popLayout">{lessonCards.map((card, index) => <motion.div key={card.type} layout initial={{ opacity: 0, y: 12 }} animate={{ opacity: index <= active ? 1 : .48, y: 0 }} transition={{ delay: index * .08 }} className={`cs-lesson-card cs-lesson-card-${card.type}`}><div className="cs-card-art">{card.type === "concept" ? <><span className="cs-plant-stem" /><span className="cs-plant-leaf leaf-a" /><span className="cs-plant-leaf leaf-b" /><span className="cs-sun" /></> : card.type === "example" ? <><span className="cs-node node-a">LIGHT</span><span className="cs-node node-b">CO₂</span><span className="cs-node node-c">ENERGY</span><span className="cs-node-line" /></> : <><span className="cs-check">✓</span><span className="cs-check-line line-a" /><span className="cs-check-line line-b" /></>}</div><span className="cs-card-label">{card.label}</span><strong>{card.title}</strong><p>{card.copy}</p><span className="cs-card-link">Open card <Arrow /></span></motion.div>)}</AnimatePresence></div></div>
+      </div>
+    </div>
   );
 }
 
-function OrbitingLesson() {
-  const orbit = useRef<Group>(null);
-  useFrame((state) => {
-    if (orbit.current) orbit.current.rotation.z = state.clock.getElapsedTime() * 0.16;
-  });
-
-  return (
-    <group ref={orbit}>
-      <Line points={[[-3.1, 0, 0], [3.1, 0, 0]]} color="#7f8cff" opacity={0.2} transparent lineWidth={1} />
-      <Line points={[[0, -2.5, 0], [0, 2.5, 0]]} color="#ff806b" opacity={0.18} transparent lineWidth={1} />
-      <mesh position={[-2.65, 0.22, 0.2]}><sphereGeometry args={[0.16, 20, 20]} /><meshStandardMaterial color="#ff806b" emissive="#ff806b" emissiveIntensity={0.8} /></mesh>
-      <mesh position={[2.55, -0.3, 0.15]}><sphereGeometry args={[0.11, 20, 20]} /><meshStandardMaterial color="#82e0bb" emissive="#82e0bb" emissiveIntensity={0.75} /></mesh>
-      <mesh position={[0.35, 2.05, 0.2]}><sphereGeometry args={[0.13, 20, 20]} /><meshStandardMaterial color="#ffdc78" emissive="#ffdc78" emissiveIntensity={0.8} /></mesh>
-    </group>
-  );
-}
-
-function LessonScene() {
-  return (
-    <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0.5, 7.6], fov: 34 }} gl={{ antialias: true, alpha: true }}>
-      <ambientLight intensity={1.2} />
-      <directionalLight position={[3, 5, 5]} intensity={3} color="#fff4df" />
-      <pointLight position={[-4, 2, 3]} intensity={8} distance={10} color="#625cf5" />
-      <pointLight position={[4, -1, 2]} intensity={5} distance={8} color="#ff806b" />
-      <Float speed={1.2} rotationIntensity={0.12} floatIntensity={0.35}><LessonBook /></Float>
-      <OrbitingLesson />
-      <Sparkles count={45} scale={[7, 5, 3]} size={1.4} speed={0.25} color="#b5b8ff" opacity={0.65} />
-      <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.25} maxPolarAngle={Math.PI / 1.75} autoRotate autoRotateSpeed={0.35} />
-    </Canvas>
-  );
-}
+function WorkflowStrip() { const [active, setActive] = useState(1); return <div className="cs-workflow-strip">{workflow.map((item, index) => <button key={item.label} onClick={() => setActive(index)} className={`cs-workflow-item ${active === index ? "is-active" : ""}`}><span className="cs-workflow-number">{item.icon}</span><span><strong>{item.label}</strong><small>{item.title}</small></span><Arrow /></button>)}</div>; }
 
 export function ClassSyncLanding() {
   return (
-    <main className="classsync-page min-h-screen overflow-hidden bg-[#f4f1ea] text-[#17233d] selection:bg-[#ff765f] selection:text-white">
-      <div className="classsync-ambient pointer-events-none fixed inset-0" aria-hidden="true"><div className="classsync-glow classsync-glow-one" /><div className="classsync-glow classsync-glow-two" /><div className="classsync-grain" /></div>
+    <main className="cs-site">
+      <div className="cs-background" aria-hidden="true"><div className="cs-background-grid" /><div className="cs-background-glow" /></div>
+      <nav className="cs-nav"><Link href="/classsync" className="cs-brand"><span>CS</span><strong>ClassSync</strong></Link><div className="cs-nav-links"><a href="#product">Product</a><a href="#how-it-works">How it works</a><a href="#teachers">For teachers</a><a href="#students">For students</a></div><div className="cs-nav-actions"><a href={appUrl} target="_blank" rel="noreferrer" className="cs-login">Log in</a><a href={appUrl} target="_blank" rel="noreferrer" className="cs-nav-cta">Start using ClassSync <Arrow /></a></div><button className="cs-mobile-menu" aria-label="Open menu">☰</button></nav>
 
-      <nav className="relative z-20 mx-auto flex max-w-[90rem] items-center justify-between px-6 py-7 md:px-12 md:py-9"><Link href="/" className="flex items-center gap-3 text-[#17233d]"><span className="grid h-10 w-10 place-items-center rounded-[14px] bg-[#17233d] text-[10px] font-extrabold tracking-tight text-[#f4f1ea] shadow-[0_8px_24px_rgba(23,35,61,0.16)]">CS</span><span className="text-[16px] font-bold tracking-[-0.03em]">ClassSync</span></Link><div className="flex items-center gap-5"><span className="hidden text-[12px] font-medium text-[#17233d]/45 sm:inline">A KLYVEN project</span><a href={appUrl} target="_blank" rel="noopener noreferrer" className="classsync-nav-link">Open app <span>↗</span></a></div></nav>
+      <section className="cs-hero" id="product"><div className="cs-hero-copy"><div className="cs-eyebrow"><span className="cs-eyebrow-line" /> THE LESSON WORKSPACE FOR REAL CLASSROOMS</div><h1>Never lose a<br /><em>lesson</em> again.</h1><p className="cs-hero-lede">ClassSync captures what a teacher explains, turns it into a visual lesson, and gives every student a clear next step.</p><div className="cs-hero-actions"><a href={appUrl} target="_blank" rel="noreferrer" className="cs-button cs-button-primary">Start using ClassSync <Arrow /></a><a href="#how-it-works" className="cs-button cs-button-secondary"><span className="cs-play">▶</span> See how it works</a></div><div className="cs-hero-proof"><span className="cs-proof-stack"><i>✓</i><i>↗</i><i>+</i></span><span>Built around the moments<br /><strong>that used to get lost.</strong></span></div></div><div className="cs-hero-product"><div className="cs-product-tag"><span className="cs-pulse" /> LIVE PRODUCT PREVIEW</div><ProductWindow /><p className="cs-product-caption">A lesson moves from recording to ready-to-learn in one workspace.</p></div></section>
 
-      <section className="relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] max-w-[90rem] items-center gap-2 px-6 pb-20 pt-4 md:grid-cols-[0.82fr_1.18fr] md:px-12 md:pb-28 md:pt-4"><div className="relative z-10 max-w-[42rem] md:pb-8"><motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="classsync-kicker">The classroom, in motion</motion.p><motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }} className="mt-7 max-w-2xl text-[clamp(3.6rem,7.6vw,8rem)] font-extrabold leading-[0.92] tracking-[-0.085em] text-[#17233d]">Keep every lesson <span className="text-[#5961d9]">alive.</span></motion.h1><motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }} className="mt-8 max-w-[27rem] text-[17px] leading-[1.65] tracking-[-0.015em] text-[#17233d]/58 md:text-[18px]">A teacher records. ClassSync turns the moment into a clear, visual lesson students can keep moving through.</motion.p><motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28 }} className="mt-10 flex flex-wrap items-center gap-5"><a href={appUrl} target="_blank" rel="noopener noreferrer" className="classsync-primary-button">Start building <span>↗</span></a><a href="#flow" className="classsync-text-link">See how it works <span>↓</span></a></motion.div></div><div className="relative -my-4 h-[30rem] w-full md:-my-10 md:h-[43rem]"><div className="classsync-scene-halo" /><LessonScene /><div className="classsync-scene-caption">Drag the lesson · watch it unfold</div></div></section>
+      <section className="cs-problem"><div className="cs-section-intro"><span className="cs-eyebrow">THE PROBLEM</span><h2>A class can be over<br /><em>before learning is.</em></h2></div><div className="cs-problem-grid"><div className="cs-problem-statement"><span className="cs-big-quote">“</span><p>Teachers explain once. Students miss a piece. Notes become fragments. The bell rings.</p><span className="cs-dash-line" /></div><div className="cs-problem-list"><div><span>01</span><strong>The important moment moves too fast.</strong><p>A good explanation disappears when it only exists in the room.</p></div><div><span>02</span><strong>Incomplete notes create a harder next class.</strong><p>Students spend time reconstructing instead of understanding.</p></div><div><span>03</span><strong>Teachers repeat what should have carried forward.</strong><p>Every missed concept becomes tomorrow&apos;s interruption.</p></div></div></div></section>
 
-      <section id="flow" className="relative z-10 mx-auto max-w-[90rem] px-6 pb-28 md:px-12 md:pb-40"><div className="classsync-rule mb-12" /><div className="grid gap-14 md:grid-cols-3 md:gap-16">{["Capture the real explanation", "Turn ideas into a visual lesson", "Give students their next step"].map((label, index) => <motion.div key={label} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ delay: index * 0.1 }} className="classsync-step"><span className="classsync-step-number">0{index + 1}</span><p>{label}</p><span className="classsync-step-arrow">↗</span></motion.div>)}</div></section>
+      <section className="cs-solution" id="how-it-works"><div className="cs-section-intro cs-section-intro-wide"><span className="cs-eyebrow">THE CLASSYNC LOOP</span><h2>One explanation.<br /><em>A lesson that keeps going.</em></h2><p>ClassSync is the bridge between what happens in class and what students can actually return to later.</p></div><WorkflowStrip /><div className="cs-loop-visual"><div className="cs-loop-line" /><div className="cs-loop-orb orb-one">REC</div><div className="cs-loop-orb orb-two">AI</div><div className="cs-loop-orb orb-three">GO</div><div className="cs-loop-label label-one">Teacher explanation</div><div className="cs-loop-label label-two">ClassSync workspace</div><div className="cs-loop-label label-three">Student next step</div></div></section>
 
-      <section className="relative z-10 mx-auto max-w-[90rem] px-6 pb-28 md:px-12 md:pb-40"><div className="classsync-cta"><div className="classsync-cta-orbit classsync-cta-orbit-one" /><div className="classsync-cta-orbit classsync-cta-orbit-two" /><div className="relative max-w-[42rem]"><p className="classsync-kicker text-[#5961d9]">Never a wasted class</p><h2 className="mt-6 max-w-3xl text-[clamp(2.8rem,5.6vw,6rem)] font-extrabold leading-[0.94] tracking-[-0.08em] text-[#17233d]">The next lesson is already waiting.</h2><p className="mt-7 max-w-md text-[16px] leading-7 text-[#17233d]/55">Give every explanation somewhere useful to go.</p><a href={appUrl} target="_blank" rel="noopener noreferrer" className="classsync-primary-button mt-9">Open ClassSync <span>↗</span></a></div></div></section>
+      <section className="cs-demo"><div className="cs-demo-copy"><span className="cs-eyebrow">SEE THE DIFFERENCE</span><h2>The product is the<br /><em>lesson plan.</em></h2><p>Not another place to upload a recording. A focused workspace that makes the next useful version of a class.</p><div className="cs-demo-points"><span><b>01</b><strong>Keep the explanation</strong><small>The original context stays attached to the lesson.</small></span><span><b>02</b><strong>Make the idea visible</strong><small>Concepts become cards students can scan and revisit.</small></span><span><b>03</b><strong>Continue with confidence</strong><small>Every lesson ends with a clear action, not a blank page.</small></span></div></div><div className="cs-demo-product"><ProductWindow compact /></div></section>
 
-      <footer className="relative z-10 mx-auto flex max-w-[90rem] flex-col gap-3 border-t border-[#17233d]/12 px-6 py-8 text-[12px] font-medium text-[#17233d]/45 md:flex-row md:items-center md:justify-between md:px-12"><span>ClassSync is a KLYVEN project.</span><span>Built for better days in the classroom.</span></footer>
+      <section className="cs-audience" id="teachers"><div className="cs-audience-card cs-audience-teacher"><div className="cs-audience-top"><span className="cs-eyebrow">FOR TEACHERS</span><span className="cs-audience-mark">T</span></div><h2>Teach the room.<br /><em>Keep the record.</em></h2><p>Spend your energy on the explanation, not on rebuilding it into five different resources after the bell.</p><a href={appUrl} target="_blank" rel="noreferrer" className="cs-inline-link">Build a lesson <Arrow /></a><div className="cs-audience-graphic cs-teacher-graphic"><span className="cs-graphic-window"><i /><i /><i /><b>42:06</b></span><span className="cs-graphic-wave" /></div></div><div className="cs-audience-card cs-audience-student" id="students"><div className="cs-audience-top"><span className="cs-eyebrow">FOR STUDENTS</span><span className="cs-audience-mark">S</span></div><h2>Come back to<br /><em>what matters.</em></h2><p>Review the explanation, see the key idea, and know exactly what to do next — even after class is over.</p><a href={appUrl} target="_blank" rel="noreferrer" className="cs-inline-link">Follow the next step <Arrow /></a><div className="cs-audience-graphic cs-student-graphic"><span className="cs-student-card"><b>✓</b><strong>Photosynthesis</strong><small>3 concepts understood</small></span><span className="cs-student-progress"><i /></span></div></div></section>
+
+      <section className="cs-final"><div className="cs-final-mark">CS</div><span className="cs-eyebrow">START WITH THE NEXT CLASS</span><h2>Your next lesson<br /><em>shouldn&apos;t disappear.</em></h2><p>Give every explanation somewhere useful to go.</p><a href={appUrl} target="_blank" rel="noreferrer" className="cs-button cs-button-primary">Start using ClassSync <Arrow /></a></section>
+      <footer className="cs-footer"><Link href="/classsync" className="cs-brand"><span>CS</span><strong>ClassSync</strong></Link><p>A KLYVEN project for better days in the classroom.</p><div><a href="#product">Product</a><a href="#how-it-works">How it works</a><a href={appUrl} target="_blank" rel="noreferrer">Open app ↗</a></div></footer>
     </main>
   );
 }
