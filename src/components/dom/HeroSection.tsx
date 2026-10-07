@@ -47,6 +47,15 @@ export function HeroSection() {
         >
           Founded by Naman Sharma &amp; Ayush Mishra
         </motion.p>
+        <motion.p
+          className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-blue-100/65"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 1.2, ease: "easeOut" }}
+        >
+          KLYVEN is an AI software company building ClassSync for schools,
+          Nexcarto, Pikoo OS, and open-source tools.
+        </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -44,10 +44,10 @@ export function AboutSection() {
           </h2>
           <div className="mt-8 h-px w-24 mx-auto bg-gradient-to-r from-transparent via-violet-400/40 to-transparent" />
           <p className="mt-8 text-sm md:text-base leading-relaxed max-w-xl mx-auto text-blue-100/70">
-            KLYVEN builds and ships real products — and publishes the research
-            behind them, in the open. From local delivery to open-source tools,
-            we work across the stack. Some things we open source, some things
-            we build commercially. All of it engineered to last.
+            KLYVEN is an AI software company that builds and ships real
+            products — including ClassSync for schools, Nexcarto, Pikoo OS,
+            and open-source tools — while publishing the research behind them
+            in the open.
           </p>
           <p className="mt-6 text-sm md:text-base leading-relaxed max-w-xl mx-auto text-blue-100/70">
             KLYVEN was founded by{" "}

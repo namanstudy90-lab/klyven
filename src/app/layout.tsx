@@ -17,11 +17,11 @@ const siteVerification =
 
 export const metadata: Metadata = {
   title: {
-    default: "KLYVEN — Engineering Tomorrow",
+    default: "KLYVEN — AI Software Company Building ClassSync",
     template: "%s | KLYVEN",
   },
   description:
-    "KLYVEN — Engineering Tomorrow. Founded by Naman Sharma and Ayush Mishra in 2026. KLYVEN builds and ships real products — Nexcarto, Pikoo OS, and open-source tools — and publishes the research behind them, in the open.",
+    "KLYVEN is an AI software company founded by Naman Sharma and Ayush Mishra. We build ClassSync for schools, Nexcarto, Pikoo OS, and open-source tools.",
   keywords: [
     "KLYVEN",
     "custom software development",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "KLYVEN",
     title: "KLYVEN — Engineering Tomorrow",
     description:
-      "KLYVEN — Engineering Tomorrow. Founded by Naman Sharma and Ayush Mishra in 2026. KLYVEN builds and ships real products — Nexcarto, Pikoo OS, and open-source tools — and publishes the research behind them, in the open.",
+      "KLYVEN is an AI software company building ClassSync for schools, Nexcarto, Pikoo OS, and open-source tools.",
     images: [
       {
         url: "/og.png",
@@ -106,11 +106,19 @@ const jsonLd = {
     {
       "@type": "Organization",
       name: "KLYVEN",
+      alternateName: "Klyven",
       url: siteUrl,
       logo: `${siteUrl}/logo.png`,
       description:
-        "KLYVEN builds and ships real products — and publishes the research behind them, in the open. From local delivery to open-source tools.",
+        "KLYVEN is an AI software company founded by Naman Sharma and Ayush Mishra. It builds ClassSync for schools, Nexcarto, Pikoo OS, and open-source tools.",
       foundingDate: "2026",
+      knowsAbout: [
+        "AI software",
+        "education technology",
+        "custom software development",
+        "real-time systems",
+        "open-source tools",
+      ],
       founder: [
         {
           "@type": "Person",
@@ -132,6 +140,13 @@ const jsonLd = {
       },
       sameAs: ["https://github.com/klyven", "https://www.instagram.com/klyvenofficial"],
       offers: [
+        {
+          "@type": "Offer",
+          name: "ClassSync",
+          description: "AI-powered lesson generation and teaching software for schools",
+          price: "0",
+          priceCurrency: "USD",
+        },
         {
           "@type": "Offer",
           name: "Custom Software",
