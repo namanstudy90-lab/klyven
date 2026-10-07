@@ -1,60 +1,120 @@
 "use client";
 
 import Link from "next/link";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Float, Line, OrbitControls, RoundedBox, Sparkles, Text } from "@react-three/drei";
 import { motion } from "framer-motion";
+import { useRef } from "react";
+import type { Group, Mesh } from "three";
 
 const appUrl = "https://classsync-alpha.vercel.app";
 
-const lessonSteps = [
-  { number: "01", label: "Capture", title: "The teacher explains", text: "Record the lesson naturally. ClassSync keeps the ideas, examples, and rhythm." },
-  { number: "02", label: "Shape", title: "The lesson takes form", text: "A clear visual guide, practice moments, and a ready-to-teach script come together." },
-  { number: "03", label: "Continue", title: "Students keep moving", text: "A missed class becomes a moment to learn—not a gap to recover from." },
-];
+function LessonBook() {
+  const book = useRef<Group>(null);
+  const pageLeft = useRef<Mesh>(null);
+  const pageRight = useRef<Mesh>(null);
 
-function OpenBook() {
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime();
+    if (book.current) {
+      book.current.rotation.y = Math.sin(time * 0.35) * 0.18;
+      book.current.rotation.x = -0.08 + Math.sin(time * 0.55) * 0.025;
+      book.current.position.y = Math.sin(time * 0.7) * 0.14;
+    }
+    if (pageLeft.current) pageLeft.current.rotation.y = -0.16 + Math.sin(time * 0.8) * 0.025;
+    if (pageRight.current) pageRight.current.rotation.y = 0.16 - Math.sin(time * 0.8) * 0.025;
+  });
+
   return (
-    <div className="relative mx-auto w-full max-w-[31rem] [perspective:1400px]">
-      <motion.div animate={{ y: [0, -7, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="relative h-[22rem] sm:h-[26rem]">
-        <div className="absolute left-1/2 top-1/2 h-[18rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-[1.5rem] bg-[#d7cdbd] opacity-50 blur-2xl" />
-        <div className="absolute left-1/2 top-[52%] h-5 w-[25rem] -translate-x-1/2 rounded-full bg-[#17243b]/20 blur-md" />
-        <div className="absolute left-1/2 top-1/2 z-10 h-[17rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-[1.3rem] bg-[#263957] shadow-[0_22px_0_#17243b,0_34px_50px_rgba(23,36,59,0.24)] sm:h-[19rem] sm:w-[28rem]">
-          <div className="absolute inset-x-0 bottom-0 h-4 rounded-b-[1.3rem] bg-[#17243b]" />
-          <div className="absolute left-1/2 top-3 bottom-4 z-30 w-[3px] -translate-x-1/2 rounded-full bg-[#17243b]/50" />
-          <motion.div initial={{ rotateY: -6 }} animate={{ rotateY: [-6, -2, -6] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} style={{ transformOrigin: "right center" }} className="absolute left-3 top-3 bottom-4 w-[calc(50%-4px)] rounded-l-[1rem] bg-[#fffdf7] p-5 shadow-[-8px_5px_12px_rgba(23,36,59,0.1)] sm:p-7">
-            <div className="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.18em] text-[#9b8e7c]"><span>Lesson 01</span><span>Listen</span></div>
-            <div className="mt-8 space-y-3"><div className="h-2 w-4/5 rounded-full bg-[#e8ded0]" /><div className="h-2 w-full rounded-full bg-[#eee7dc]" /><div className="h-2 w-3/5 rounded-full bg-[#eee7dc]" /></div>
-            <div className="mt-10 grid h-20 place-items-center rounded-2xl bg-[#f8e5d7] text-4xl sm:h-24">🎙️</div>
-            <div className="mt-5 flex items-end gap-1.5"><motion.span animate={{ height: [8, 20, 12, 27, 10] }} transition={{ duration: 1.4, repeat: Infinity }} className="w-1.5 rounded-full bg-[#f18468]" /><motion.span animate={{ height: [16, 10, 26, 14, 20] }} transition={{ duration: 1.2, repeat: Infinity }} className="w-1.5 rounded-full bg-[#f18468]" /><motion.span animate={{ height: [24, 14, 9, 22, 16] }} transition={{ duration: 1.1, repeat: Infinity }} className="w-1.5 rounded-full bg-[#f18468]" /><div className="ml-2 h-1.5 flex-1 rounded-full bg-[#eee7dc]" /></div>
-          </motion.div>
-          <motion.div initial={{ rotateY: 6 }} animate={{ rotateY: [6, 2, 6] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} style={{ transformOrigin: "left center" }} className="absolute right-3 top-3 bottom-4 w-[calc(50%-4px)] rounded-r-[1rem] bg-[#fffdf7] p-5 shadow-[8px_5px_12px_rgba(23,36,59,0.1)] sm:p-7">
-            <div className="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.18em] text-[#9b8e7c]"><span>Photosynthesis</span><span>Build</span></div>
-            <div className="mt-7 flex items-center justify-center"><motion.div animate={{ scale: [1, 1.07, 1] }} transition={{ duration: 3, repeat: Infinity }} className="grid h-20 w-20 place-items-center rounded-full bg-[#ccefe0] text-4xl sm:h-24 sm:w-24">🌱</motion.div></div>
-            <div className="mt-7 space-y-3"><div className="h-2 w-full rounded-full bg-[#d9eee5]" /><div className="h-2 w-4/5 rounded-full bg-[#e8f4ee]" /><div className="h-2 w-3/5 rounded-full bg-[#e8f4ee]" /></div>
-            <div className="mt-8 rounded-xl bg-[#625cf5] px-3 py-2 text-center text-[9px] font-bold uppercase tracking-[0.14em] text-white">Try it yourself</div>
-          </motion.div>
-        </div>
-      </motion.div>
-      <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -right-1 top-5 z-40 rounded-xl border border-[#17243b]/10 bg-white px-3 py-2 shadow-[0_12px_24px_rgba(23,36,59,0.12)] sm:-right-6"><p className="text-[10px] font-bold text-[#17243b]">Lesson ready</p><p className="mt-0.5 text-[9px] text-[#8b95a5]">3 activities added</p></motion.div>
-    </div>
+    <group ref={book} position={[0, 0, 0]}>
+      <mesh position={[0, -0.12, -0.12]} rotation={[0, 0, 0]}>
+        <boxGeometry args={[3.95, 2.45, 0.18]} />
+        <meshStandardMaterial color="#111a3b" roughness={0.28} metalness={0.25} />
+      </mesh>
+      <mesh ref={pageLeft} position={[-0.94, 0.05, 0.08]} rotation={[0, -0.16, 0]}>
+        <boxGeometry args={[1.86, 2.28, 0.075]} />
+        <meshStandardMaterial color="#fff6e8" roughness={0.7} />
+      </mesh>
+      <mesh ref={pageRight} position={[0.94, 0.05, 0.08]} rotation={[0, 0.16, 0]}>
+        <boxGeometry args={[1.86, 2.28, 0.075]} />
+        <meshStandardMaterial color="#fff6e8" roughness={0.7} />
+      </mesh>
+      <mesh position={[0, 0.1, 0.15]}>
+        <boxGeometry args={[0.075, 2.26, 0.1]} />
+        <meshStandardMaterial color="#ff806b" emissive="#ff806b" emissiveIntensity={0.3} />
+      </mesh>
+
+      <Text position={[-1.48, 0.72, 0.18]} rotation={[0, 0, 0]} fontSize={0.12} color="#64709a" anchorX="left" anchorY="middle">LESSON 01</Text>
+      <Text position={[-1.48, 0.4, 0.18]} fontSize={0.22} color="#18234f" anchorX="left" anchorY="middle">Photosynthesis</Text>
+      <mesh position={[-1.08, -0.28, 0.18]}>
+        <circleGeometry args={[0.44, 32]} />
+        <meshStandardMaterial color="#bfead6" emissive="#80d8b2" emissiveIntensity={0.18} />
+      </mesh>
+      <Text position={[-1.08, -0.28, 0.2]} fontSize={0.35} anchorX="center" anchorY="middle">🌱</Text>
+      <mesh position={[-1.48, -0.78, 0.18]}><boxGeometry args={[1.25, 0.055, 0.02]} /><meshStandardMaterial color="#e8dccb" /></mesh>
+      <mesh position={[-1.48, -0.62, 0.18]}><boxGeometry args={[1.55, 0.055, 0.02]} /><meshStandardMaterial color="#eee5d7" /></mesh>
+
+      <Text position={[0.45, 0.72, 0.18]} fontSize={0.12} color="#64709a" anchorX="left" anchorY="middle">VISUAL GUIDE</Text>
+      <mesh position={[0.82, 0.05, 0.18]}>
+        <torusGeometry args={[0.47, 0.055, 12, 48]} />
+        <meshStandardMaterial color="#625cf5" emissive="#625cf5" emissiveIntensity={0.45} />
+      </mesh>
+      <mesh position={[0.82, 0.05, 0.18]}>
+        <sphereGeometry args={[0.12, 24, 24]} />
+        <meshStandardMaterial color="#ff806b" emissive="#ff806b" emissiveIntensity={0.9} />
+      </mesh>
+      <mesh position={[0.45, -0.73, 0.18]}><boxGeometry args={[1.45, 0.055, 0.02]} /><meshStandardMaterial color="#d8d4f9" /></mesh>
+      <mesh position={[0.45, -0.57, 0.18]}><boxGeometry args={[1.05, 0.055, 0.02]} /><meshStandardMaterial color="#e6e3fa" /></mesh>
+    </group>
+  );
+}
+
+function OrbitingLesson() {
+  const orbit = useRef<Group>(null);
+  useFrame((state) => {
+    if (orbit.current) orbit.current.rotation.z = state.clock.getElapsedTime() * 0.16;
+  });
+
+  return (
+    <group ref={orbit}>
+      <Line points={[[-3.1, 0, 0], [3.1, 0, 0]]} color="#7f8cff" opacity={0.2} transparent lineWidth={1} />
+      <Line points={[[0, -2.5, 0], [0, 2.5, 0]]} color="#ff806b" opacity={0.18} transparent lineWidth={1} />
+      <mesh position={[-2.65, 0.22, 0.2]}><sphereGeometry args={[0.16, 20, 20]} /><meshStandardMaterial color="#ff806b" emissive="#ff806b" emissiveIntensity={0.8} /></mesh>
+      <mesh position={[2.55, -0.3, 0.15]}><sphereGeometry args={[0.11, 20, 20]} /><meshStandardMaterial color="#82e0bb" emissive="#82e0bb" emissiveIntensity={0.75} /></mesh>
+      <mesh position={[0.35, 2.05, 0.2]}><sphereGeometry args={[0.13, 20, 20]} /><meshStandardMaterial color="#ffdc78" emissive="#ffdc78" emissiveIntensity={0.8} /></mesh>
+    </group>
+  );
+}
+
+function LessonScene() {
+  return (
+    <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0.5, 7.6], fov: 34 }} gl={{ antialias: true, alpha: true }}>
+      <ambientLight intensity={1.2} />
+      <directionalLight position={[3, 5, 5]} intensity={3} color="#fff4df" />
+      <pointLight position={[-4, 2, 3]} intensity={8} distance={10} color="#625cf5" />
+      <pointLight position={[4, -1, 2]} intensity={5} distance={8} color="#ff806b" />
+      <Float speed={1.2} rotationIntensity={0.12} floatIntensity={0.35}><LessonBook /></Float>
+      <OrbitingLesson />
+      <Sparkles count={45} scale={[7, 5, 3]} size={1.4} speed={0.25} color="#b5b8ff" opacity={0.65} />
+      <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.25} maxPolarAngle={Math.PI / 1.75} autoRotate autoRotateSpeed={0.35} />
+    </Canvas>
   );
 }
 
 export function ClassSyncLanding() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f4f0e8] text-[#17243b] selection:bg-[#625cf5] selection:text-white">
-      <div className="pointer-events-none fixed inset-0 opacity-40" aria-hidden="true"><div className="absolute left-[8%] top-[18%] h-2 w-2 rounded-full bg-[#f18468]" /><div className="absolute right-[14%] top-[28%] h-1.5 w-1.5 rounded-full bg-[#625cf5]" /><div className="absolute left-[42%] top-[68%] h-2 w-2 rounded-full bg-[#6bcaa0]" /></div>
+    <main className="min-h-screen overflow-hidden bg-[#080d25] text-white selection:bg-[#ff806b] selection:text-[#080d25]">
+      <div className="pointer-events-none fixed inset-0" aria-hidden="true"><div className="absolute left-[-20%] top-[-15%] h-[34rem] w-[34rem] rounded-full bg-[#625cf5]/20 blur-[120px]" /><div className="absolute right-[-14%] top-[20%] h-[30rem] w-[30rem] rounded-full bg-[#ff806b]/12 blur-[120px]" /><div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.2)_1px,transparent_1px)] [background-size:64px_64px]" /></div>
 
-      <nav className="relative z-20 mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10 md:py-8"><Link href="/" className="flex items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-lg bg-[#17243b] text-[10px] font-black text-white">CS</span><span className="text-[15px] font-bold tracking-[-0.02em]">ClassSync</span></Link><div className="flex items-center gap-5"><span className="hidden text-xs text-[#7c8798] sm:inline">A KLYVEN project</span><a href={appUrl} target="_blank" rel="noopener noreferrer" className="btn btn-neutral min-h-0 rounded-full border-0 px-4 py-2.5 text-xs font-bold">Open app <span className="ml-1">↗</span></a></div></nav>
+      <nav className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-10 md:py-8"><Link href="/" className="flex items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-xl bg-[#ff806b] text-[10px] font-black text-[#080d25] shadow-[0_0_24px_rgba(255,128,107,0.24)]">CS</span><span className="text-[15px] font-bold tracking-tight">ClassSync</span></Link><div className="flex items-center gap-4"><span className="hidden text-xs text-white/45 sm:inline">A KLYVEN project</span><a href={appUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary min-h-0 rounded-full border-0 bg-white px-4 py-2.5 text-xs font-bold text-[#080d25] hover:bg-[#ff806b]">Open app <span className="ml-1">↗</span></a></div></nav>
 
-      <section className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-6 pb-24 pt-12 md:grid-cols-[0.9fr_1.1fr] md:gap-8 md:px-10 md:pb-32 md:pt-20"><div className="max-w-xl"><motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#f18468]">Continuity for every classroom</motion.p><motion.h1 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mt-6 font-serif text-[clamp(3.4rem,7vw,6.6rem)] font-bold leading-[0.91] tracking-[-0.065em] text-[#17243b]">A better way to keep a lesson <span className="text-[#625cf5]">alive.</span></motion.h1><motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mt-7 max-w-lg text-[15px] leading-7 text-[#697588] md:text-lg">ClassSync turns a teacher&apos;s recording into a visual, substitute-ready lesson—so students can keep learning even when the school day changes.</motion.p><motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-9 flex flex-wrap items-center gap-3"><a href={appUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary min-h-0 rounded-full border-0 bg-[#625cf5] px-6 py-4 text-sm font-bold text-white shadow-[0_12px_22px_rgba(98,92,245,0.2)]">Start a lesson <span className="ml-2">↗</span></a><a href="#flow" className="btn btn-ghost min-h-0 rounded-full border border-[#17243b]/15 bg-white/40 px-6 py-4 text-sm font-bold text-[#536176]">See how it works</a></motion.div><p className="mt-7 text-xs font-semibold text-[#9a9388]">For teachers, schools, and curious learners.</p></div><OpenBook /></section>
+      <section className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-5 px-6 pb-20 pt-8 md:grid-cols-[0.75fr_1.25fr] md:px-10 md:pb-28 md:pt-10"><div className="max-w-xl"><motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#ff806b]">The classroom, in motion</motion.p><motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }} className="mt-6 max-w-lg text-[clamp(3.5rem,7.5vw,7.4rem)] font-black leading-[0.88] tracking-[-0.075em]">Keep every lesson <span className="text-[#8f93ff]">alive.</span></motion.h1><motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }} className="mt-7 max-w-md text-[15px] leading-7 text-white/55 md:text-base">A teacher records. ClassSync transforms. Students keep moving.</motion.p><motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28 }} className="mt-8 flex flex-wrap gap-3"><a href={appUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary min-h-0 rounded-full border-0 bg-[#ff806b] px-6 py-4 text-sm font-bold text-[#080d25] shadow-[0_12px_30px_rgba(255,128,107,0.22)] hover:bg-[#ff9a88]">Start building <span className="ml-2">↗</span></a><a href="#flow" className="btn btn-ghost min-h-0 rounded-full border border-white/15 px-6 py-4 text-sm font-bold text-white/70 hover:bg-white/10">Explore the flow</a></motion.div></div><div className="relative h-[28rem] w-full md:h-[38rem]"><div className="absolute left-1/2 top-1/2 h-[20rem] w-[20rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#625cf5]/16 blur-[90px]" /><LessonScene /><div className="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.25em] text-white/35">drag the lesson · watch it unfold</div></div></section>
 
-      <section className="relative z-10 border-y border-[#17243b]/10 bg-[#eee8dd]/70"><div className="mx-auto grid max-w-6xl gap-8 px-6 py-8 sm:grid-cols-3 md:px-10"><div><p className="text-2xl font-serif font-bold text-[#17243b]">one recording</p><p className="mt-1 text-xs text-[#7c8798]">to start the lesson</p></div><div><p className="text-2xl font-serif font-bold text-[#17243b]">three moments</p><p className="mt-1 text-xs text-[#7c8798]">explain · practice · reflect</p></div><div><p className="text-2xl font-serif font-bold text-[#17243b]">zero gaps</p><p className="mt-1 text-xs text-[#7c8798]">when the day changes</p></div></div></section>
+      <section id="flow" className="relative z-10 border-y border-white/10 bg-white/[0.03] px-6 py-16 md:px-10 md:py-20"><div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-3 md:gap-0">{["Capture the real explanation", "Turn ideas into a visual lesson", "Give students their next step"].map((label, index) => <motion.div key={label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="border-white/10 md:border-l md:px-8 md:first:border-l-0"><span className="text-xs font-bold tracking-[0.2em] text-[#ff806b]">0{index + 1}</span><p className="mt-4 max-w-xs text-xl font-bold leading-tight tracking-[-0.03em] text-white/90">{label}</p></motion.div>)}</div></section>
 
-      <section id="flow" className="relative z-10 mx-auto max-w-6xl scroll-mt-5 px-6 py-24 md:px-10 md:py-32"><div className="max-w-2xl"><p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#625cf5]">The ClassSync method</p><h2 className="mt-5 max-w-xl font-serif text-4xl font-bold leading-[0.98] tracking-[-0.05em] md:text-6xl">The book opens. The learning continues.</h2></div><div className="mt-14 grid gap-0 md:grid-cols-3">{lessonSteps.map((step, index) => <motion.article key={step.number} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ delay: index * 0.12 }} className="relative border-t border-[#17243b]/15 py-7 md:min-h-[15rem] md:border-l md:border-t-0 md:px-7 md:first:border-l-0"><span className="text-xs font-bold tracking-[0.16em] text-[#a49d91]">{step.number}</span><p className="mt-10 text-[10px] font-bold uppercase tracking-[0.2em] text-[#f18468]">{step.label}</p><h3 className="mt-3 font-serif text-2xl font-bold tracking-[-0.04em]">{step.title}</h3><p className="mt-3 max-w-xs text-sm leading-6 text-[#697588]">{step.text}</p></motion.article>)}</div></section>
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36"><div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#171d4a] to-[#0d1232] px-7 py-14 shadow-[0_30px_80px_rgba(0,0,0,0.2)] md:px-16 md:py-20"><div className="absolute -right-16 -top-20 h-64 w-64 rounded-full border border-[#8f93ff]/30" /><div className="absolute -right-2 -top-6 h-48 w-48 rounded-full border border-[#ff806b]/20" /><div className="relative max-w-2xl"><p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8f93ff]">Never a wasted class</p><h2 className="mt-5 max-w-xl text-4xl font-black leading-[0.92] tracking-[-0.065em] md:text-6xl">The next lesson is already waiting.</h2><a href={appUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-9 min-h-0 rounded-full border-0 bg-[#ff806b] px-6 py-4 text-sm font-bold text-[#080d25] hover:bg-[#ff9a88]">Open ClassSync <span className="ml-2">↗</span></a></div></div></section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-28 md:px-10 md:pb-36"><div className="card overflow-hidden rounded-[2rem] border-0 bg-[#17243b] text-[#fffdf7] shadow-[0_20px_45px_rgba(23,36,59,0.16)]"><div className="grid items-center gap-10 px-7 py-12 md:grid-cols-[1fr_auto] md:px-14 md:py-16"><div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ffb39d]">Make the next class count</p><h2 className="mt-5 max-w-2xl font-serif text-4xl font-bold leading-[0.98] tracking-[-0.055em] md:text-6xl">Every good lesson deserves another chance to land.</h2><p className="mt-5 max-w-lg text-sm leading-6 text-white/60">Bring continuity, clarity, and a little more breathing room to the school day.</p></div><a href={appUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary min-h-0 rounded-full border-0 bg-[#ffb39d] px-6 py-4 text-sm font-bold text-[#17243b]">Open ClassSync <span className="ml-2">↗</span></a></div></div></section>
-
-      <footer className="relative z-10 border-t border-[#17243b]/10 px-6 py-8 text-center text-xs font-semibold text-[#8b918f]">ClassSync is a KLYVEN project · Built for better days in the classroom.</footer>
+      <footer className="relative z-10 border-t border-white/10 px-6 py-8 text-center text-xs text-white/35">ClassSync is a KLYVEN project · Built for better days in the classroom.</footer>
     </main>
   );
 }
