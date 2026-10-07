@@ -41,28 +41,40 @@ export function SchoolsSection() {
             recorded class into a clear, animated lesson that never wastes a
             day.
           </p>
-          <Link
-            href="/classsync/"
-            className="mt-10 inline-block text-xs tracking-[0.25em] uppercase py-4 px-10 rounded-full transition-all duration-500 text-white"
-            style={{
-              background: "rgba(0,212,255,0.15)",
-              border: "1px solid rgba(0,212,255,0.3)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(0,212,255,0.25)";
-              e.currentTarget.style.borderColor = "rgba(0,212,255,0.5)";
-              e.currentTarget.style.boxShadow = "0 0 40px rgba(0,212,255,0.2)";
-              useStore.getState().setCursorVariant("hover");
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(0,212,255,0.15)";
-              e.currentTarget.style.borderColor = "rgba(0,212,255,0.3)";
-              e.currentTarget.style.boxShadow = "none";
-              useStore.getState().setCursorVariant("default");
-            }}
-          >
-            Talk to KLYVEN
-          </Link>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/classsync/"
+              className="inline-flex items-center gap-3 text-xs tracking-[0.25em] uppercase py-4 px-8 rounded-full transition-all duration-500 text-white"
+              style={{
+                background: "rgba(0,212,255,0.2)",
+                border: "1px solid rgba(0,212,255,0.45)",
+                boxShadow: "0 0 30px rgba(0,212,255,0.08)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(0,212,255,0.32)";
+                e.currentTarget.style.borderColor = "rgba(0,212,255,0.7)";
+                e.currentTarget.style.boxShadow = "0 0 40px rgba(0,212,255,0.2)";
+                useStore.getState().setCursorVariant("hover");
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(0,212,255,0.2)";
+                e.currentTarget.style.borderColor = "rgba(0,212,255,0.45)";
+                e.currentTarget.style.boxShadow = "0 0 30px rgba(0,212,255,0.08)";
+                useStore.getState().setCursorVariant("default");
+              }}
+            >
+              Explore ClassSync <span aria-hidden="true">↗</span>
+            </Link>
+            <Link
+              href="/contact/"
+              className="inline-flex items-center text-xs tracking-[0.25em] uppercase py-4 px-8 rounded-full transition-all duration-500 text-blue-100/70"
+              style={{ border: "1px solid rgba(255,255,255,0.12)" }}
+              onMouseEnter={() => useStore.getState().setCursorVariant("hover")}
+              onMouseLeave={() => useStore.getState().setCursorVariant("default")}
+            >
+              Talk to KLYVEN
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

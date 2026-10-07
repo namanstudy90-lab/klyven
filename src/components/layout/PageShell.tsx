@@ -8,6 +8,8 @@ import { useStore } from "@/lib/store";
 const NAV = [
   { label: "Services", href: "/#services" },
   { label: "Products", href: "/#products" },
+  { label: "For Schools", href: "/schools" },
+  { label: "ClassSync", href: "/classsync" },
   { label: "About", href: "/about" },
   { label: "Team", href: "/team" },
   { label: "Contact", href: "/contact" },
@@ -148,3 +150,4 @@ export function PageShell({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
