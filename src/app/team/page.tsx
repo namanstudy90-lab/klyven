@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     "KLYVEN was founded by Naman Sharma and Ayush Mishra. Meet the pair building and shipping real products — and publishing the research behind them, in the open.",
   alternates: {
-    canonical: `${siteUrl}/team`,
+    canonical: `${siteUrl}/team/`,
   },
   openGraph: {
     title: "Founders & Team | KLYVEN",
     description:
       "Naman Sharma and Ayush Mishra founded KLYVEN in 2026 to build and ship real products — and publish the research behind them, in the open.",
-    url: `${siteUrl}/team`,
+    url: `${siteUrl}/team/`,
     type: "website",
   },
 };
@@ -25,7 +25,7 @@ const breadcrumbLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-    { "@type": "ListItem", position: 2, name: "Team", item: `${siteUrl}/team` },
+    { "@type": "ListItem", position: 2, name: "Team", item: `${siteUrl}/team/` },
   ],
 };
 

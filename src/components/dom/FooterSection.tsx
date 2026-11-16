@@ -8,6 +8,7 @@ import { useStore } from "@/lib/store";
 const LINKS = [
   { label: "Services", href: "/#services" },
   { label: "Products", href: "/#products" },
+  { label: "For Schools", href: "/schools" },
   { label: "Open Source", href: "/#opensource" },
   { label: "Research", href: "/#research" },
   { label: "About", href: "/about" },

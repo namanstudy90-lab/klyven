@@ -23,6 +23,14 @@ const channels = [
     accent: "#ff2d78",
     icon: "◆",
   },
+  {
+    label: "Founder",
+    handle: "@ayush.mishra7532",
+    body: "Reach Ayush Mishra, founder of KLYVEN.",
+    href: "https://www.instagram.com/ayush.mishra7532",
+    accent: "#7b2ff7",
+    icon: "◆",
+  },
 ];
 
 export function ContactContent() {

@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     "Get in touch with KLYVEN. Email us at Klyven4UU@gmail.com or reach us on Instagram at @klyvenofficial and @naman.infinity.",
   alternates: {
-    canonical: `${siteUrl}/contact`,
+    canonical: `${siteUrl}/contact/`,
   },
   openGraph: {
     title: "Contact KLYVEN",
     description: "Connect with KLYVEN on Instagram.",
-    url: `${siteUrl}/contact`,
+    url: `${siteUrl}/contact/`,
     type: "website",
   },
 };
@@ -24,7 +24,7 @@ const breadcrumbLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-    { "@type": "ListItem", position: 2, name: "Contact", item: `${siteUrl}/contact` },
+    { "@type": "ListItem", position: 2, name: "Contact", item: `${siteUrl}/contact/` },
   ],
 };
 
